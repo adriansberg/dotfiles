@@ -1,0 +1,29 @@
+# Update
+alias brewup="brew -v update && brew -v upgrade && brew cask upgrade && brew -v cleanup --prune=5 && brew doctor"
+
+# Formulae and general
+alias bi="brew info" # conflicts with bundler! comment this out to use that alias instead
+alias bis="brew install"
+alias bus="brew uninstall"
+alias bs="brew search"
+alias bsd="brew search --desc"
+alias brdr="brew doctor"
+alias blv="brew leaves"
+alias brls="brew ls"
+
+# Cask
+alias cask="brew cask"
+alias ci="brew cask info"
+alias cis="brew cask install"
+alias cus="brew cask uninstall"
+alias cuz="brew cask zap"
+alias gotop="gotop --color=solarized"
+
+
+alias ql='qlmanage -p "$@" &> /dev/null'
+alias dev='npm run dev'
+
+gbdd () {
+  git branch | grep "$1" | xargs git branch -D
+}
+

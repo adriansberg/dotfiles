@@ -1,10 +1,19 @@
-- clean: ['~']
+- defaults:
+    link:
+      relink: true
+
+- clean: ["~"]
 
 - link:
     ~/.ssh/config:
-        path: ssh/config
-        create: true
+      path: ssh/config
+      create: true
     ~/.vimrc: vimrc
     ~/.zshrc: zshrc
+    ~/.alias: alias
+    ~/.purepower: purepower
 
-
+- shell:
+    - [sh homebrew.sh, Installing Homebrew]
+    - [brew bundle, Installing apps from Brewfile]
+    - [sh macos.sh, Changing Mac settings]
