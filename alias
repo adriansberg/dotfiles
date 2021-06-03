@@ -1,5 +1,5 @@
 # Update
-alias brewup="brew -v update && brew -v upgrade && brew cask upgrade && brew -v cleanup --prune=5 && brew doctor"
+alias brewup="brew -v update && brew -v upgrade && brew -v cleanup --prune=5 && brew doctor"
 
 # Formulae and general
 alias bi="brew info" # conflicts with bundler! comment this out to use that alias instead
@@ -14,16 +14,28 @@ alias brls="brew ls"
 # Cask
 alias cask="brew cask"
 alias ci="brew cask info"
-alias cis="brew cask install"
-alias cus="brew cask uninstall"
+alias cis="brew install --cask"
+alias cus="brew uninstall --cask"
 alias cuz="brew cask zap"
 alias gotop="gotop --color=solarized"
 
 
 alias ql='qlmanage -p "$@" &> /dev/null'
 alias dev='npm run dev'
+alias build='npm run build'
+
+alias tf="terraform"
+
+alias bpkg="bat package.json"
 
 gbdd () {
   git branch | grep "$1" | xargs git branch -D
 }
 
+gbpa () {
+  git checkout master && git fetch -p && git branch -vv | awk '/: gone]/{print $1}' | xargs git branch -D
+}
+
+findid () {
+  osascript -e "id of app \"$1\""
+}

@@ -45,3 +45,6 @@ antigen apply
 
 source ~/.purepower
 source ~/.alias
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/local/bin/terraform terraform
