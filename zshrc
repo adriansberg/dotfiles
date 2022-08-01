@@ -15,6 +15,8 @@ export NVM_LAZY_LOAD=true
 # Load the oh-my-zsh's library.
 antigen use oh-my-zsh
 
+plugins=(virtualenv)
+
 # Bundles
 antigen bundle lukechilds/zsh-nvm
 antigen bundle git
@@ -48,3 +50,4 @@ source ~/.alias
 
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/bin/terraform terraform
+

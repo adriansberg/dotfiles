@@ -25,7 +25,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-endwise'
-Plug 'tpope/vim-surround' 
+Plug 'tpope/vim-surround'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/syntastic'
 Plug 'terryma/vim-multiple-cursors'
@@ -80,7 +80,7 @@ set mouse=a
 set wildmenu
 
 " Allow cursor keys in insert mode.
-set esckeys
+" set esckeys
 
 " Allow backspace in insert mode.
 " set backspace=indent,eol,start

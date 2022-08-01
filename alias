@@ -26,7 +26,13 @@ alias build='npm run build'
 
 alias tf="terraform"
 
+alias f="flutter"
+
 alias bpkg="bat package.json"
+
+azlog () {
+  az webapp log tail --name $1 --resource-group $2
+}
 
 gbdd () {
   git branch | grep "$1" | xargs git branch -D
