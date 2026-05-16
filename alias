@@ -1,3 +1,13 @@
+alias ls='lsd'
+alias catt='cat $_'
+
+alias docker="podman"
+alias python="python3"
+
+alias cr="cargo run"
+alias cb="cargo build"
+alias cc="cargo clippy"
+
 # Update
 alias brewup="brew -v update && brew -v upgrade && brew -v cleanup --prune=5 && brew doctor"
 
@@ -23,6 +33,7 @@ alias gotop="gotop --color=solarized"
 alias ql='qlmanage -p "$@" &> /dev/null'
 alias dev='npm run dev'
 alias build='npm run build'
+alias rebuild='yarn clean:install && yarn setup dev atb && cd ios && bundle exec pod install --repo-update && cd ../android && ./gradlew clean && cd .. && yarn start --reset-cache'
 
 alias tf="terraform"
 
@@ -39,7 +50,7 @@ gbdd () {
 }
 
 gbpa () {
-  git checkout master && git fetch -p && git branch -vv | awk '/: gone]/{print $1}' | xargs git branch -D
+  git checkout main && git fetch -p && git branch -vv | awk '/: gone]/{print $1}' | xargs git branch -D
 }
 
 findid () {
