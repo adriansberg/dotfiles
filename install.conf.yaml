@@ -11,7 +11,7 @@
     ~/.vimrc: vimrc
     ~/.zshrc: zshrc
     ~/.alias: alias
-    ~/.purepower: purepower
+    ~/.p10k.zsh: p10k.zsh
 
 - shell:
     - [sh xcode.sh, Installing XCode Command Line Tools]

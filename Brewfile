@@ -32,7 +32,6 @@ brew "postgresql"                                       # PostgreSQL
 brew "protobuf"                                         # Protocol Buffers
 brew "ranger"                                           # terminal file manager
 brew "rbenv"                                            # Ruby version manager
-brew "starship"                                         # cross-shell prompt
 brew "terminal-notifier"                                # macOS notifications from terminal
 brew "terraform"                                        # infrastructure as code
 brew "the_silver_searcher"                              # fast code search (ag)
