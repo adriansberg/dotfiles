@@ -17,4 +17,4 @@
     - [sh xcode.sh, Installing XCode Command Line Tools]
     - [sh homebrew.sh, Installing Homebrew]
     - [brew bundle, Installing apps from Brewfile]
-    - [sh macos.sh, Changing Mac settings]
+    - [sh macos.sh, Applying macOS defaults]

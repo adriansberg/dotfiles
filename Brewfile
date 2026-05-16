@@ -1,5 +1,4 @@
 tap "azure/functions"
-tap "clintmod/formulas"
 tap "daipeihust/tap"
 tap "homebrew/core"
 tap "isen-ng/dotnet-sdk-versions"
@@ -39,7 +38,6 @@ brew "tldr"                                             # simplified man pages
 brew "tree"                                             # directory tree view
 brew "watch"                                            # run command repeatedly
 brew "wget"                                             # file downloader
-brew "clintmod/formulas/macprefs"                       # Mac preferences backup/restore
 
 cask "nikitabobko/tap/aerospace"                        # tiling window manager
 cask "alt-tab"                                          # Windows-style alt-tab
