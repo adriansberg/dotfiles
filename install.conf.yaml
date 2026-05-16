@@ -6,6 +6,9 @@
 
 - link:
     ~/.aerospace.toml: aerospace.toml
+    ~/.gnupg/gpg-agent.conf:
+      path: gnupg/gpg-agent.conf
+      create: true
     ~/.gitconfig: gitconfig
     ~/.gitignore: gitignore_global
     ~/.ssh/config:
