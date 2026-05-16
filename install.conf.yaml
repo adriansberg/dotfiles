@@ -5,6 +5,7 @@
 - clean: ["~"]
 
 - link:
+    ~/.aerospace.toml: aerospace.toml
     ~/.gitconfig: gitconfig
     ~/.gitignore: gitignore_global
     ~/.ssh/config:
