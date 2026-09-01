@@ -18,6 +18,7 @@
     ~/.zshrc: zshrc
     ~/.alias: alias
     ~/.p10k.zsh: p10k.zsh
+    ~/.config/ghostty/config: config.ghostty
 
 - shell:
     - [sh xcode.sh, Installing XCode Command Line Tools]

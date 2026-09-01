@@ -1,0 +1,8 @@
+theme = One Dark Two
+
+keybind = global:cmd+grave_accent=toggle_quick_terminal
+
+macos-option-as-alt = left
+
+split-inherit-working-directory = true
+
