@@ -22,6 +22,7 @@ export ANDROID_HOME=$HOME/Library/Android/sdk
 export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME/emulator:$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_SDK_ROOT #:$HOME/.jenv/shims
 export GPG_TTY=$(tty)
+export JAVA_HOME=$(/usr/libexec/java_home -v 17)
 
 export DOTNET_CLI_UI_LANGUAGE=en-US
 
@@ -70,3 +71,4 @@ eval "$(rbenv init - zsh)"
 eval "$(jenv init -)"
 [[ "$TERM_PROGRAM" == "vscode" ]] && . "$(code --locate-shell-integration-path zsh)"
 
+export PATH="/opt/homebrew/opt/postgresql@18/bin:$PATH"
