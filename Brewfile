@@ -72,6 +72,7 @@ cask "qlstephen"                                        # Quick Look: plain text
 cask "quicklook-json"                                   # Quick Look: JSON preview
 cask "quicklook-video"                                  # Quick Look: video thumbnails
 cask "raycast"                                          # Spotlight replacement / launcher
+cask "readdle-spark"                                    # Spark email client
 cask "rocket"                                           # emoji picker
 cask "setapp"                                           # subscription app platform
 cask "slack"                                            # team messaging
