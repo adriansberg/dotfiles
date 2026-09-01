@@ -53,6 +53,7 @@ cask "firefox"                                          # browser
 cask "font-fira-code"                                   # monospace font with ligatures
 cask "font-fira-code-nerd-font"                         # Fira Code with dev icons
 cask "gcloud-cli"                                       # Google Cloud SDK
+cask "ghostty"                                          # GPU-accelerated terminal emulator
 cask "google-chrome"                                    # browser
 cask "gpg-suite"                                        # GPG tools for Mac
 cask "insomnia"                                         # REST/GraphQL API client
