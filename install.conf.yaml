@@ -19,6 +19,9 @@
     ~/.alias: alias
     ~/.p10k.zsh: p10k.zsh
     ~/.config/ghostty/config: config.ghostty
+    ~/.config/rex/init.lua:
+      path: rex.lua
+      create: true
 
 - shell:
     - [sh xcode.sh, Installing XCode Command Line Tools]
