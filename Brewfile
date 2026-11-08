@@ -8,6 +8,7 @@ brew "bat"                                              # cat with syntax highli
 brew "node"                                             # JavaScript runtime
 brew "bitwarden-cli"                                    # Bitwarden password manager CLI
 brew "cloc"                                             # count lines of code
+brew "fd"                                               # fast find alternative (used by LazyVim)
 brew "fzf"                                              # fuzzy finder
 brew "gh"                                               # GitHub CLI
 brew "git"                                              # version control
@@ -19,6 +20,7 @@ brew "imagemagick"                                      # image manipulation
 brew "jenv"                                             # Java version manager
 brew "jq"                                               # JSON processor
 brew "kubectx"                                          # switch kubectl contexts easily
+brew "lazygit"                                          # terminal UI for git (used by LazyVim)
 brew "lsd"                                              # ls with colors and icons
 brew "maven"                                            # Java build tool
 brew "minikube"                                         # local Kubernetes cluster
@@ -32,6 +34,7 @@ brew "postgresql"                                       # PostgreSQL
 brew "protobuf"                                         # Protocol Buffers
 brew "ranger"                                           # terminal file manager
 brew "rbenv"                                            # Ruby version manager
+brew "ripgrep"                                          # fast grep (rg, used by LazyVim)
 brew "terminal-notifier"                                # macOS notifications from terminal
 brew "terraform"                                        # infrastructure as code
 brew "the_silver_searcher"                              # fast code search (ag)
