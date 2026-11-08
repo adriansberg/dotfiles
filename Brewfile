@@ -22,6 +22,7 @@ brew "kubectx"                                          # switch kubectl context
 brew "lsd"                                              # ls with colors and icons
 brew "maven"                                            # Java build tool
 brew "minikube"                                         # local Kubernetes cluster
+brew "neovim"                                           # Vim-based editor (LazyVim config in nvim/)
 brew "nvm"                                              # Node version manager
 brew "pinentry-mac"                                     # GPG PIN entry for Mac
 brew "pipx"                                             # install Python CLI tools in isolated envs

@@ -22,6 +22,7 @@
     ~/.config/rex/init.lua:
       path: rex.lua
       create: true
+    ~/.config/nvim: nvim
 
 - shell:
     - [sh xcode.sh, Installing XCode Command Line Tools]

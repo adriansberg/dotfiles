@@ -1,0 +1,11 @@
+-- File explorer (Space e) on the right instead of the left.
+return {
+  "folke/snacks.nvim",
+  opts = {
+    picker = {
+      sources = {
+        explorer = { layout = { layout = { position = "right" } } },
+      },
+    },
+  },
+}
