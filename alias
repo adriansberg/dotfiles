@@ -56,3 +56,50 @@ gbpa () {
 findid () {
   osascript -e "id of app \"$1\""
 }
+
+pane-color() {
+  printf '\033]11;%s\007' "$1"
+}
+
+gwtcd() {
+  emulate -L zsh
+  local line wtpath='' branch='' selection target width=0 display
+  local -a branches paths rows
+
+  while IFS= read -r line; do
+    case $line in
+      'worktree '*) wtpath=${line#worktree } ;;
+      'branch '*) branch=${line#branch refs/heads/} ;;
+      '')
+        if [[ -n $wtpath ]]; then
+          branch=${branch:-detached}
+          branches+=("$branch")
+          paths+=("$wtpath")
+          (( ${#branch} > width )) && width=${#branch}
+        fi
+        wtpath='' branch=''
+        ;;
+    esac
+  done < <(git worktree list --porcelain)
+
+  if [[ -n $wtpath ]]; then
+    branch=${branch:-detached}
+    branches+=("$branch")
+    paths+=("$wtpath")
+    (( ${#branch} > width )) && width=${#branch}
+  fi
+
+  (( ${#branches} )) || return 1
+
+  for (( i = 1; i <= ${#branches}; i++ )); do
+    printf -v display '%-*s  %s\t%s' \
+      "$width" "${branches[i]}" "${paths[i]}" "${paths[i]}"
+    rows+=("$display")
+  done
+
+  selection=$(printf '%s\n' "${rows[@]}" |
+    fzf --delimiter=$'\t' --with-nth=1 --prompt='worktree> ') || return
+
+  target=${selection##*$'\t'}
+  cd -- "$target"
+}

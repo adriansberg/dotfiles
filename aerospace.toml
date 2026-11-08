@@ -1,5 +1,6 @@
 # Place a copy of this config to ~/.aerospace.toml
 # After that, you can edit ~/.aerospace.toml to your liking
+config-version = 2
 
 # It's not necessary to copy all keys to your config.
 # If the key is missing in your config, "default-config.toml" will serve as a fallback
@@ -265,5 +266,10 @@ run = "layout floating"
 [[on-window-detected]]
 if.app-id="com.mitchellh.ghostty"
 run= [
-  "layout tiling",
+  "move-node-to-workspace T",
+  "layout floating",
 ]
+
+[[on-window-detected]]
+if.app-id = "md.obsidian"
+run = 'move-node-to-workspace B'

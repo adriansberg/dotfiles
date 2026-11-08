@@ -1,17 +1,23 @@
 [user]
 	name = Adrian Santana Berg
 	email = adrian_berg96@hotmail.com
-	signingkey = 74531DB5B3D3FA58
+	signingkey = <adrian_berg96@hotmail.com>
 [pull]
     ff = only
 [core]
 	excludesFile = ~/.gitignore
 	autocrlf = input
-[url "ssh://git@github.com/"]
-	insteadOf = https://github.com/
 [init]
 	defaultBranch = main
 [commit]
 	gpgsign = true
 [gpg]
 	program = gpg
+[tag]
+	gpgSign = true
+[credential "https://github.com"]
+	helper =
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper =
+	helper = !/opt/homebrew/bin/gh auth git-credential
