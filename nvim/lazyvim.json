@@ -8,6 +8,9 @@
     "lazyvim.plugins.extras.lang.typescript.biome",
     "lazyvim.plugins.extras.lang.typescript.vtsls",
     "lazyvim.plugins.extras.lang.vue",
+    "lazyvim.plugins.extras.linting.eslint",
+    "lazyvim.plugins.extras.ui.mini-animate",
+    "lazyvim.plugins.extras.util.dot",
     "lazyvim.plugins.extras.util.mini-hipatterns"
   ],
   "install_version": 8,
