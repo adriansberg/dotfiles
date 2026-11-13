@@ -112,7 +112,7 @@ mode "service" {
 
 # ---------------------------------------------------------------------------
 # = [[on-window-detected]]. Check a window's class with: xprop WM_CLASS
-# Not ported: Outlook, Messenger (no Linux apps), Raycast (rofi floats itself).
+# Not ported: Outlook, Messenger (no Linux apps), Raycast (Vicinae floats itself).
 # ---------------------------------------------------------------------------
 assign [class="(?i)^com\.mitchellh\.ghostty$"] T
 assign [class="^Slack$"] S
@@ -133,8 +133,11 @@ bindsym $mod+grave [class="^ghostty\.quick$"] scratchpad show, move position cen
 # ---------------------------------------------------------------------------
 # Basics macOS gave you for free (from Ubuntu's default i3 config).
 # ---------------------------------------------------------------------------
-# Launcher in place of Raycast (whose default hotkey is Option+Space).
-bindsym $mod+space exec --no-startup-id rofi -show drun
+# Vicinae in place of Raycast (whose default hotkey is Option+Space): launcher
+# and clipboard history. Vicinae also tries to grab Alt+Space itself; i3 wins.
+exec --no-startup-id vicinae server
+bindsym $mod+space exec --no-startup-id vicinae toggle
+bindsym $mod+Shift+v exec --no-startup-id vicinae vicinae://launch/clipboard/history
 # Lock like Ctrl+Cmd+Q, log out of i3.
 bindsym Control+$mod+q exec --no-startup-id loginctl lock-session
 bindsym $mod+Shift+e exec i3-nagbar -t warning -m 'Log out of i3?' -B 'Yes' 'i3-msg exit'

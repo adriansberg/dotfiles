@@ -31,11 +31,14 @@ That's it. The install script will:
 Install the basics first, then run the setup above:
 
 ```bash
-sudo apt install git curl unzip zsh build-essential i3 rofi dex xss-lock xclip
+sudo apt install git curl unzip zsh build-essential i3 dex xss-lock xclip
 chsh -s "$(which zsh)"
+curl -fsSL https://vicinae.com/install | bash
 ```
 
 [i3](https://i3wm.org) stands in for AeroSpace with the same shortcuts (`i3/config`). Log out and pick "i3" from the gear icon on the login screen.
+
+[Vicinae](https://docs.vicinae.com) stands in for Raycast: Alt+Space opens the launcher and Alt+Shift+V the clipboard history. It sends usage statistics by default; turn that off in its settings under General.
 
 The install skips the macOS-only steps and Brewfile entries. VS Code extensions are installed only if `code` is already on the PATH.
 
