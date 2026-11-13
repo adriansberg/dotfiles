@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+[ "$(uname)" = Darwin ] || exit 0
+
 osascript -e 'tell application "System Settings" to quit'
 
 sudo -v

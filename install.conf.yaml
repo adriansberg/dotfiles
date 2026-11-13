@@ -4,9 +4,15 @@
 
 - clean: ["~"]
 
+# gpg warns on every use unless its directory is private.
+- create:
+    ~/.gnupg:
+      mode: 0700
+
 - link:
     ~/.aerospace.toml: aerospace.toml
     ~/.gnupg/gpg-agent.conf:
+      if: '[ "$(uname)" = Darwin ]'
       path: gnupg/gpg-agent.conf
       create: true
     ~/.gitconfig: gitconfig
@@ -18,14 +24,35 @@
     ~/.zshrc: zshrc
     ~/.alias: alias
     ~/.p10k.zsh: p10k.zsh
-    ~/.config/ghostty/config: config.ghostty
+    ~/.config/ghostty/config:
+      path: config.ghostty
+      create: true
     ~/.config/rex/init.lua:
       path: rex.lua
       create: true
     ~/.config/nvim: nvim
 
+# Linux-only links. A second block because one YAML map can't list ~/.gnupg/gpg-agent.conf twice.
+- link:
+    ~/.gnupg/gpg-agent.conf:
+      if: '[ "$(uname)" = Linux ]'
+      path: gnupg/gpg-agent.linux.conf
+      create: true
+    ~/.config/i3/config:
+      if: '[ "$(uname)" = Linux ]'
+      path: i3/config
+      create: true
+
 - shell:
     - [sh xcode.sh, Installing XCode Command Line Tools]
-    - [sh homebrew.sh, Installing Homebrew]
-    - [brew bundle, Installing apps from Brewfile]
+    # The Homebrew installer asks for sudo, so it needs a terminal.
+    - command: sh homebrew.sh
+      description: Installing Homebrew
+      stdin: true
+      stdout: true
+      stderr: true
+    - command: brew bundle
+      description: Installing apps from Brewfile
+      stdout: true
+      stderr: true
     - [sh macos.sh, Applying macOS defaults]

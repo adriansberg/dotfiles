@@ -17,7 +17,7 @@
 	gpgSign = true
 [credential "https://github.com"]
 	helper =
-	helper = !/opt/homebrew/bin/gh auth git-credential
+	helper = !PATH=/opt/homebrew/bin:/home/linuxbrew/.linuxbrew/bin:$PATH gh auth git-credential
 [credential "https://gist.github.com"]
 	helper =
-	helper = !/opt/homebrew/bin/gh auth git-credential
+	helper = !PATH=/opt/homebrew/bin:/home/linuxbrew/.linuxbrew/bin:$PATH gh auth git-credential

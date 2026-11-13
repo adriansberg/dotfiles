@@ -9,7 +9,7 @@
 
 # dotfiles
 
-Personal macOS setup for a fresh machine. Managed with [dotbot](https://github.com/anishathalye/dotbot).
+Personal macOS and Ubuntu setup for a fresh machine. Managed with [dotbot](https://github.com/anishathalye/dotbot).
 
 ## Setup
 
@@ -24,7 +24,20 @@ That's it. The install script will:
 1. Create symlinks for all config files
 2. Install Homebrew (if missing)
 3. Install all packages and apps via `Brewfile`
-4. Apply macOS system defaults
+4. Apply macOS system defaults (macOS only)
+
+### Linux (Ubuntu)
+
+Install the basics first, then run the setup above:
+
+```bash
+sudo apt install git curl unzip zsh build-essential i3 rofi dex xss-lock xclip
+chsh -s "$(which zsh)"
+```
+
+[i3](https://i3wm.org) stands in for AeroSpace with the same shortcuts (`i3/config`). Log out and pick "i3" from the gear icon on the login screen.
+
+The install skips the macOS-only steps and Brewfile entries. VS Code extensions are installed only if `code` is already on the PATH.
 
 ## What's included
 

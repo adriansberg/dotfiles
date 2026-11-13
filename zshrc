@@ -13,6 +13,9 @@ then
 fi
 source ~/.zsh/antigen/antigen.zsh
 
+# Homebrew on Linux. On the Mac, ~/.zprofile does this.
+[[ -x /home/linuxbrew/.linuxbrew/bin/brew ]] && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
 # Exports
 export EDITOR=vim
 export NVM_DIR="$HOME/.nvm"

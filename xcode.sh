@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+[ "$(uname)" = Darwin ] || exit 0
+
 if ! xcode-select --print-path &> /dev/null; then
   echo "Installing XCode Command Line Tools."
 

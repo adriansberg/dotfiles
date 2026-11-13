@@ -26,7 +26,7 @@ brew "maven"                                            # Java build tool
 brew "minikube"                                         # local Kubernetes cluster
 brew "neovim"                                           # Vim-based editor (LazyVim config in nvim/)
 brew "nvm"                                              # Node version manager
-brew "pinentry-mac"                                     # GPG PIN entry for Mac
+brew "pinentry-mac" if OS.mac?                          # GPG PIN entry for Mac
 brew "pipx"                                             # install Python CLI tools in isolated envs
 brew "pnpm"                                             # fast Node package manager
 brew "podman"                                           # container engine (Docker alternative)
@@ -35,7 +35,7 @@ brew "protobuf"                                         # Protocol Buffers
 brew "ranger"                                           # terminal file manager
 brew "rbenv"                                            # Ruby version manager
 brew "ripgrep"                                          # fast grep (rg, used by LazyVim)
-brew "terminal-notifier"                                # macOS notifications from terminal
+brew "terminal-notifier" if OS.mac?                     # macOS notifications from terminal
 brew "terraform"                                        # infrastructure as code
 brew "the_silver_searcher"                              # fast code search (ag)
 brew "tldr"                                             # simplified man pages
@@ -43,7 +43,7 @@ brew "tree"                                             # directory tree view
 brew "watch"                                            # run command repeatedly
 brew "wget"                                             # file downloader
 
-cask "nikitabobko/tap/aerospace"                        # tiling window manager
+cask "nikitabobko/tap/aerospace" if OS.mac?             # tiling window manager
 cask "alt-tab"                                          # Windows-style alt-tab
 cask "android-platform-tools"                           # adb and fastboot
 cask "appcleaner"                                       # thorough app uninstaller
@@ -90,6 +90,8 @@ cask "visual-studio-code"                               # code editor
 cask "vlc"                                              # media player
 cask "zen@twilight"                                     # browser
 
+# Extensions need VS Code itself, which Homebrew can only install on macOS.
+if OS.mac? || which("code", ORIGINAL_PATHS)
 vscode "alefragnani.bookmarks"
 vscode "aleksandardev.vscode-sequence-diagrams"
 vscode "andrewleedham.vscode-css-modules"
@@ -203,6 +205,7 @@ vscode "wix.vscode-import-cost"
 vscode "wrecklessengineer.vscode-instance-rename"
 vscode "yzhang.markdown-all-in-one"
 vscode "zhuangtongfa.material-theme"
+end
 
 go "golang.org/x/tools/gopls"
 go "honnef.co/go/tools/cmd/staticcheck"
