@@ -12,14 +12,14 @@
 set $mod Mod4
 set $cmd Mod1
 
-# Colemak for the session. i3 re-reads its bindings when the layout changes.
-exec --no-startup-id setxkbmap -layout us -variant colemak
+# Colemak with Caps Lock as Escape for the session. i3 re-reads its bindings when the layout changes.
+exec --no-startup-id setxkbmap -layout us -variant colemak -option caps:escape
 
 font pango:FiraCode Nerd Font 10
 
 # = [gaps]. i3 adds outer gaps on top of inner, so this is 10px everywhere.
 gaps inner 10px
-gaps outer 0px
+gaps outer 10px
 
 # = default-root-container-orientation = 'auto'
 default_orientation auto
