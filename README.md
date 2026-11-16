@@ -40,7 +40,7 @@ curl -fsSL https://vicinae.com/install | bash
 
 Win+V opens the clipboard history from [Vicinae](https://docs.vicinae.com), and Win+\` the quick terminal. Vicinae's usage statistics and its own Alt+Space shortcut are turned off in `vicinae/settings.json`, which Vicinae also saves its other settings to.
 
-The flow runs in two kinds of session. Both show up under the gear icon on the login screen.
+The flow runs in three kinds of session. Each shows up under the gear icon on the login screen.
 
 #### Regolith / X11
 
@@ -70,6 +70,25 @@ Regolith's own Win+C/D/W/B shortcuts are on Win+Ctrl here because those letters 
 gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'us+colemak')]"
 gsettings set org.gnome.desktop.input-sources xkb-options "['caps:escape']"
 ```
+
+#### i3-gnome
+
+i3 inside GNOME's own session (`i3/gnome`), with nothing else added. GNOME handles the function keys, power, sound, the lock screen, the keyboard layout and Settings; the bar is i3's own.
+
+```bash
+sudo apt install gnome-session-flashback
+sudo sh i3-gnome/install.sh
+```
+
+| Keys | What |
+| --- | --- |
+| Win+Space | Launcher (Vicinae) |
+| Win+Ctrl+C | Ubuntu's Settings (Win+Ctrl+W wifi, Win+Ctrl+B Bluetooth, Win+Ctrl+D displays) |
+| Print, Shift+Print, Win+Print | Flameshot: annotate an area, copy an area, copy the text in an area |
+| Win+Escape | Lock |
+| Win+Shift+E | Log out |
+
+The install script also adds a few GNOME defaults that apply to this session only (`i3-gnome/90_i3-gnome.gschema.override`). Without them GNOME's own Win+L, Win+Space, Print and Shift+Print shortcuts and its desktop window take over from i3. The keyboard layout comes from GNOME, as in the Regolith session. `sudo sh i3-gnome/install.sh uninstall` removes the session again.
 
 #### i3
 

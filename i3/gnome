@@ -1,0 +1,47 @@
+# i3 inside GNOME's session ("i3-gnome" on the login screen).
+# Goes in ~/.config/i3/gnome. i3-gnome/install.sh installs the session itself.
+#
+# The shortcuts live in i3/flow. GNOME's services, which this session starts,
+# handle the function keys, power, sound, the lock screen, the keyboard layout
+# and Settings, so unlike i3/config this file sets up none of that.
+# i3 only allows comments on their own line, never after a command.
+
+# The Windows key. On an Apple keyboard, use Mod1 to stay on Option.
+set $mod Mod4
+
+font pango:FiraCode Nerd Font 10
+
+# A thin border instead of i3's title bar on every window.
+default_border pixel 2
+default_floating_border pixel 2
+
+include ~/.config/i3/flow
+
+# Vicinae in place of Raycast.
+bindsym $mod+space exec --no-startup-id vicinae toggle
+
+# Ubuntu's Settings app, on the same keys as in the Regolith session.
+bindsym $mod+Ctrl+c exec --no-startup-id gnome-control-center
+bindsym $mod+Ctrl+w exec --no-startup-id gnome-control-center wifi
+bindsym $mod+Ctrl+b exec --no-startup-id gnome-control-center bluetooth
+bindsym $mod+Ctrl+d exec --no-startup-id gnome-control-center display
+for_window [class="(?i)(gnome-control-center|org\.gnome\.Settings)"] floating enable
+
+# Flameshot in place of macshot, on the PC's screenshot key: Print captures
+# an area to annotate, Shift+Print copies an area straight to the clipboard.
+bindsym Print exec --no-startup-id flameshot gui
+bindsym Shift+Print exec --no-startup-id flameshot gui --accept-on-select --clipboard
+# Area to text (macshot's Capture OCR). The clipboard is left alone when
+# nothing was read, such as after Escape.
+bindsym $mod+Print exec --no-startup-id "f=$(mktemp) && flameshot gui --accept-on-select --raw | tesseract stdin stdout -l eng+nor > $f; [ -s $f ] && xclip -selection clipboard < $f; rm -f $f"
+
+# Log out through GNOME. Locking is GNOME's own Win+Escape: the session moves
+# its lock key there from Win+L (i3-gnome/90_i3-gnome.gschema.override).
+bindsym $mod+Shift+e exec gnome-session-quit --logout
+
+# Wifi icon in the bar's tray. GNOME only starts it for its own panel.
+exec --no-startup-id nm-applet
+
+bar {
+    status_command i3status
+}

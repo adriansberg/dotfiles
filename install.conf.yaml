@@ -50,6 +50,10 @@
       if: '[ "$(uname)" = Linux ]'
       path: i3/flow
       create: true
+    ~/.config/i3/gnome:
+      if: '[ "$(uname)" = Linux ]'
+      path: i3/gnome
+      create: true
     ~/.config/regolith3/i3/config:
       if: '[ "$(uname)" = Linux ]'
       path: regolith/config

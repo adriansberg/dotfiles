@@ -1,0 +1,13 @@
+#!/bin/sh
+# Starts GNOME's session manager with the "i3-gnome" session.
+# From github.com/mbaynton/i3-gnome (MIT, see LICENSE). "i3-gnome" is added in
+# front of the desktop names so the GNOME defaults in
+# 90_i3-gnome.gschema.override apply to this session only.
+
+if [ -z "$XDG_CURRENT_DESKTOP" ]; then
+    export XDG_CURRENT_DESKTOP="i3-gnome:ubuntu:GNOME-Flashback:GNOME"
+fi
+
+export GNOME_SHELL_SESSION_MODE=ubuntu
+
+exec gnome-session --session=i3-gnome "$@"
