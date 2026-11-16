@@ -36,13 +36,46 @@ chsh -s "$(which zsh)"
 curl -fsSL https://vicinae.com/install | bash
 ```
 
-[i3](https://i3wm.org) stands in for AeroSpace with the same shortcuts (`i3/config`). They are on the Windows key, which sits where Option does on a Mac; Alt sits where Cmd does and carries the Mac's Cmd shortcuts. Log out and pick "i3" from the gear icon on the login screen.
+[i3](https://i3wm.org) stands in for AeroSpace with the same shortcuts (`i3/flow`). They are on the Windows key, which sits where Option does on a Mac. Alt is left to applications, apart from Alt+F4, which closes a window.
 
-[Vicinae](https://docs.vicinae.com) stands in for Raycast: Alt+Space opens the launcher and Ctrl+Alt+F the clipboard history. Its usage statistics are turned off in `vicinae/settings.json`, which Vicinae also saves its other settings to.
+Win+V opens the clipboard history from [Vicinae](https://docs.vicinae.com), and Win+\` the quick terminal. Vicinae's usage statistics and its own Alt+Space shortcut are turned off in `vicinae/settings.json`, which Vicinae also saves its other settings to.
 
-[Flameshot](https://flameshot.org) stands in for macshot: Alt+Shift+4 captures an area to annotate, Alt+Shift+3 copies an area straight to the clipboard, and Alt+Shift+2 copies the text in an area (OCR).
+The flow runs in two kinds of session. Both show up under the gear icon on the login screen.
 
-i3 replaces GNOME's top bar and function-key handling, so `i3/config` binds the volume, brightness and media keys itself and puts wifi and Bluetooth icons in the bar. The brightness keys need your user in the `video` group: `sudo gpasswd -a "$USER" video`, then reboot. Ubuntu's Settings app still opens with `env XDG_CURRENT_DESKTOP=GNOME gnome-control-center`.
+#### Regolith / X11
+
+i3 inside GNOME's session (`regolith/config`), with [Regolith](https://regolith-desktop.com)'s bar, launcher, themes and Settings. GNOME handles the function keys, power and sound.
+
+```bash
+wget -qO - https://archive.regolith-desktop.com/regolith.key | gpg --dearmor | sudo tee /usr/share/keyrings/regolith-archive-keyring.gpg > /dev/null
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/regolith-archive-keyring.gpg] https://archive.regolith-desktop.com/ubuntu/stable noble v3.4" | sudo tee /etc/apt/sources.list.d/regolith.list
+sudo apt update
+sudo apt install regolith-desktop regolith-session-flashback regolith-look-lascaille
+```
+
+| Keys | What |
+| --- | --- |
+| Win+Space | Launcher |
+| Win+Ctrl+C | Settings (Win+Ctrl+W wifi, Win+Ctrl+B Bluetooth, Win+Ctrl+D displays) |
+| Win+N | Notifications |
+| Win+Alt+L | Choose a look (`sudo apt install regolith-look-nord` adds one) |
+| Win+Return | Terminal |
+| Alt+Tab | Window list |
+| Win+Escape | Lock |
+| Win+Shift+E | Log out |
+
+Regolith's own Win+C/D/W/B shortcuts are on Win+Ctrl here because those letters are workspaces. The session takes its keyboard layout from GNOME, so set Colemak and Caps Lock as Escape there:
+
+```bash
+gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'us+colemak')]"
+gsettings set org.gnome.desktop.input-sources xkb-options "['caps:escape']"
+```
+
+#### i3
+
+Bare i3 (`i3/config`). It replaces GNOME's top bar and function-key handling, so this file binds the volume, brightness and media keys itself and puts wifi and Bluetooth icons in the bar. The brightness keys need your user in the `video` group: `sudo gpasswd -a "$USER" video`, then reboot. Ubuntu's Settings app opens with `env XDG_CURRENT_DESKTOP=GNOME gnome-control-center`.
+
+Win+Space opens Vicinae as the launcher. [Flameshot](https://flameshot.org) stands in for macshot: Print captures an area to annotate, Shift+Print copies an area straight to the clipboard, and Win+Print copies the text in an area (OCR). Win+Escape locks.
 
 The install skips the macOS-only steps and Brewfile entries. VS Code extensions are installed only if `code` is already on the PATH.
 

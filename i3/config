@@ -1,161 +1,35 @@
-# i3 port of ~/.dotfiles/aerospace.toml. Goes in ~/.config/i3/config.
+# Plain i3 session ("i3" on the login screen). Goes in ~/.config/i3/config.
 # Check it on the machine with: i3 -C -c ~/.config/i3/config
 #
-# Letters are COLEMAK letters, like the AeroSpace config. bindsym follows the
-# active X keyboard layout, so no key-mapping table is needed.
+# The shortcuts live in i3/flow. This file adds what a bare i3 session lacks
+# and a full desktop would provide: layout, bar, launcher, tray, function keys.
 # i3 only allows comments on their own line, never after a command.
 
-# On a PC keyboard the Windows key sits where Option is on a Mac, and Alt
-# where Cmd is. $mod carries the AeroSpace (Option) bindings and $cmd the
-# Mac's Cmd shortcuts, so hands land where they do on the Mac.
-# On an Apple keyboard, swap the two values.
+# The Windows key. On an Apple keyboard, use Mod1 to stay on Option.
 set $mod Mod4
-set $cmd Mod1
 
 # Colemak with Caps Lock as Escape for the session. i3 re-reads its bindings when the layout changes.
 exec --no-startup-id setxkbmap -layout us -variant colemak -option caps:escape
 
 font pango:FiraCode Nerd Font 10
 
-# = [gaps]. i3 adds outer gaps on top of inner, so this is 10px everywhere.
-gaps inner 10px
-gaps outer 10px
+include ~/.config/i3/flow
 
-# = default-root-container-orientation = 'auto'
-default_orientation auto
+# Vicinae in place of Raycast.
+bindsym $mod+space exec --no-startup-id vicinae toggle
 
-# AeroSpace doesn't focus on hover; i3 does unless told not to.
-focus_follows_mouse no
+# Flameshot in place of macshot, on the PC's screenshot key: Print captures
+# an area to annotate, Shift+Print copies an area straight to the clipboard.
+bindsym Print exec --no-startup-id flameshot gui
+bindsym Shift+Print exec --no-startup-id flameshot gui --accept-on-select --clipboard
+# Area to text (macshot's Capture OCR). The clipboard is left alone when
+# nothing was read, such as after Escape.
+bindsym $mod+Print exec --no-startup-id "f=$(mktemp) && flameshot gui --accept-on-select --raw | tesseract stdin stdout -l eng+nor > $f; [ -s $f ] && xclip -selection clipboard < $f; rm -f $f"
 
-# i3's default mouse_warping (output) already = on-focused-monitor-changed.
-
-# ---------------------------------------------------------------------------
-# = [mode.main.binding]
-# ---------------------------------------------------------------------------
-
-# alt-slash: tiles, flip orientation. alt-comma: accordion (tabbed/stacked).
-bindsym $mod+slash layout toggle splith splitv
-bindsym $mod+comma layout toggle tabbed stacking
-
-bindsym $mod+h focus left
-bindsym $mod+j focus down
-bindsym $mod+k focus up
-bindsym $mod+l focus right
-
-bindsym $mod+Shift+h move left
-bindsym $mod+Shift+n move down
-bindsym $mod+Shift+k move up
-bindsym $mod+Shift+l move right
-
-# AeroSpace 'resize smart' picks the axis; i3 needs one.
-bindsym $mod+Shift+minus resize shrink width 50 px
-bindsym $mod+Shift+equal resize grow width 50 px
-
-bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace 2
-bindsym $mod+3 workspace 3
-bindsym $mod+4 workspace 4
-bindsym $mod+5 workspace 5
-bindsym $mod+6 workspace 6
-bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9
-bindsym $mod+b workspace B
-bindsym $mod+c workspace C
-bindsym $mod+d workspace D
-bindsym $mod+f workspace F
-bindsym $mod+g workspace G
-bindsym $mod+m workspace M
-bindsym $mod+p workspace P
-bindsym $mod+q workspace Q
-bindsym $mod+r workspace R
-bindsym $mod+s workspace S
-bindsym $mod+t workspace T
-bindsym $mod+w workspace W
-bindsym $mod+x workspace X
-bindsym $mod+z workspace Z
-
-bindsym $mod+Shift+1 move container to workspace 1
-bindsym $mod+Shift+2 move container to workspace 2
-bindsym $mod+Shift+3 move container to workspace 3
-bindsym $mod+Shift+4 move container to workspace 4
-bindsym $mod+Shift+5 move container to workspace 5
-bindsym $mod+Shift+6 move container to workspace 6
-bindsym $mod+Shift+7 move container to workspace 7
-bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+b move container to workspace B
-bindsym $mod+Shift+c move container to workspace C
-bindsym $mod+Shift+d move container to workspace D
-bindsym $mod+Shift+f move container to workspace F
-bindsym $mod+Shift+g move container to workspace G
-bindsym $mod+Shift+m move container to workspace M
-bindsym $mod+Shift+p move container to workspace P
-bindsym $mod+Shift+q move container to workspace Q
-bindsym $mod+Shift+r move container to workspace R
-bindsym $mod+Shift+s move container to workspace S
-bindsym $mod+Shift+t move container to workspace T
-bindsym $mod+Shift+w move container to workspace W
-bindsym $mod+Shift+x move container to workspace X
-bindsym $mod+Shift+z move container to workspace Z
-
-bindsym $mod+Tab workspace back_and_forth
-bindsym $mod+Shift+Tab move workspace to output next
-
-bindsym $mod+Shift+semicolon mode "service"
-
-# = [mode.service.binding]. Not ported: r (flatten), backspace
-# (close-all-but-current), alt-shift-n/e/i/o (join-with; in i3 you
-# 'split h' / 'split v' before opening the next window instead).
-mode "service" {
-    bindsym Escape mode "default"; reload
-    bindsym f floating toggle; mode "default"
-    bindsym Shift+f fullscreen toggle; mode "default"
-    bindsym $mod+f fullscreen toggle; mode "default"
-}
-
-# ---------------------------------------------------------------------------
-# = [[on-window-detected]]. Check a window's class with: xprop WM_CLASS
-# Not ported: Outlook, Messenger (no Linux apps), Raycast (Vicinae floats itself).
-# ---------------------------------------------------------------------------
-assign [class="(?i)^com\.mitchellh\.ghostty$"] T
-assign [class="^Slack$"] S
-assign [class="(?i)zen"] W
-assign [class="^Wfica$"] X
-assign [class="(?i)podman"] P
-assign [class="(?i)teams"] C
-assign [class="(?i)^obsidian$"] B
-# Spotify sets its class after the window appears, so assign can't catch it.
-for_window [class="^Spotify$"] move container to workspace M
-
-# Ghostty quick terminal (cmd+` on the Mac). Ghostty's own quick terminal
-# needs Wayland, so use a scratchpad.
-exec --no-startup-id ghostty --class=ghostty.quick
-for_window [class="^ghostty\.quick$"] move scratchpad, resize set 80 ppt 60 ppt, move position center
-bindsym $cmd+grave [class="^ghostty\.quick$"] scratchpad show, move position center
-
-# ---------------------------------------------------------------------------
-# Basics macOS gave you for free (from Ubuntu's default i3 config).
-# ---------------------------------------------------------------------------
-# Vicinae in place of Raycast: launcher (Cmd+Space on the Mac) and clipboard
-# history (Ctrl+Cmd+F). Vicinae also tries to grab Alt+Space itself; i3 wins.
-exec --no-startup-id vicinae server
-bindsym $cmd+space exec --no-startup-id vicinae toggle
-bindsym Control+$cmd+f exec --no-startup-id vicinae vicinae://launch/clipboard/history
-
-# Flameshot in place of macshot, on the same keys: Cmd+Shift+4 captures an
-# area to annotate, Cmd+Shift+3 copies an area straight to the clipboard.
-bindsym $cmd+Shift+4 exec --no-startup-id flameshot gui
-bindsym $cmd+Shift+3 exec --no-startup-id flameshot gui --accept-on-select --clipboard
-# Area to text (macshot's Capture OCR, which has no key on the Mac). The
-# clipboard is left alone when nothing was read, such as after Escape.
-bindsym $cmd+Shift+2 exec --no-startup-id "f=$(mktemp) && flameshot gui --accept-on-select --raw | tesseract stdin stdout -l eng+nor > $f; [ -s $f ] && xclip -selection clipboard < $f; rm -f $f"
-
-# Lock like Ctrl+Cmd+Q, log out of i3.
-bindsym Control+$cmd+q exec --no-startup-id loginctl lock-session
+# Lock, and log out of i3.
+bindsym $mod+Escape exec --no-startup-id loginctl lock-session
 bindsym $mod+Shift+e exec i3-nagbar -t warning -m 'Log out of i3?' -B 'Yes' 'i3-msg exit'
 
-floating_modifier $mod
 exec --no-startup-id dex --autostart --environment i3
 # i3/lock adds fingerprint unlock to i3lock.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- ~/.config/i3/lock
