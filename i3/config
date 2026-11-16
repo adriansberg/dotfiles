@@ -137,7 +137,8 @@ bindsym $mod+grave [class="^ghostty\.quick$"] scratchpad show, move position cen
 # and clipboard history. Vicinae also tries to grab Alt+Space itself; i3 wins.
 exec --no-startup-id vicinae server
 bindsym $mod+space exec --no-startup-id vicinae toggle
-bindsym $mod+Shift+v exec --no-startup-id vicinae vicinae://launch/clipboard/history
+# Ctrl+Cmd+F on the Mac; Alt is in Cmd's spot, as with the lock key below.
+bindsym Control+$mod+f exec --no-startup-id vicinae vicinae://launch/clipboard/history
 # Lock like Ctrl+Cmd+Q, log out of i3.
 bindsym Control+$mod+q exec --no-startup-id loginctl lock-session
 bindsym $mod+Shift+e exec i3-nagbar -t warning -m 'Log out of i3?' -B 'Yes' 'i3-msg exit'
