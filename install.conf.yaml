@@ -42,6 +42,10 @@
       if: '[ "$(uname)" = Linux ]'
       path: i3/config
       create: true
+    ~/.config/vicinae/settings.json:
+      if: '[ "$(uname)" = Linux ]'
+      path: vicinae/settings.json
+      create: true
 
 - shell:
     - [sh xcode.sh, Installing XCode Command Line Tools]

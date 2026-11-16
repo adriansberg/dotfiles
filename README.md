@@ -38,7 +38,7 @@ curl -fsSL https://vicinae.com/install | bash
 
 [i3](https://i3wm.org) stands in for AeroSpace with the same shortcuts (`i3/config`). Log out and pick "i3" from the gear icon on the login screen.
 
-[Vicinae](https://docs.vicinae.com) stands in for Raycast: Alt+Space opens the launcher and Ctrl+Alt+F the clipboard history. It sends usage statistics by default; turn that off in its settings under General.
+[Vicinae](https://docs.vicinae.com) stands in for Raycast: Alt+Space opens the launcher and Ctrl+Alt+F the clipboard history. Its usage statistics are turned off in `vicinae/settings.json`, which Vicinae also saves its other settings to.
 
 The install skips the macOS-only steps and Brewfile entries. VS Code extensions are installed only if `code` is already on the PATH.
 
