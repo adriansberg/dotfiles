@@ -157,7 +157,8 @@ bindsym $mod+Shift+e exec i3-nagbar -t warning -m 'Log out of i3?' -B 'Yes' 'i3-
 
 floating_modifier $mod
 exec --no-startup-id dex --autostart --environment i3
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+# i3/lock adds fingerprint unlock to i3lock.
+exec --no-startup-id xss-lock --transfer-sleep-lock -- ~/.config/i3/lock
 # Wifi and Bluetooth icons in the bar's tray, in place of GNOME's top bar.
 exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet

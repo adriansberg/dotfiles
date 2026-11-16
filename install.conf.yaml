@@ -42,9 +42,17 @@
       if: '[ "$(uname)" = Linux ]'
       path: i3/config
       create: true
+    ~/.config/i3/lock:
+      if: '[ "$(uname)" = Linux ]'
+      path: i3/lock
+      create: true
     ~/.config/vicinae/settings.json:
       if: '[ "$(uname)" = Linux ]'
       path: vicinae/settings.json
+      create: true
+    ~/.config/environment.d/homebrew.conf:
+      if: '[ "$(uname)" = Linux ]'
+      path: environment.d/homebrew.conf
       create: true
 
 - shell:
