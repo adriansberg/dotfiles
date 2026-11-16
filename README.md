@@ -31,14 +31,16 @@ That's it. The install script will:
 Install the basics first, then run the setup above:
 
 ```bash
-sudo apt install git curl unzip zsh build-essential i3 dex xss-lock xclip
+sudo apt install git curl unzip zsh build-essential i3 dex xss-lock xclip flameshot tesseract-ocr tesseract-ocr-nor
 chsh -s "$(which zsh)"
 curl -fsSL https://vicinae.com/install | bash
 ```
 
-[i3](https://i3wm.org) stands in for AeroSpace with the same shortcuts (`i3/config`). Log out and pick "i3" from the gear icon on the login screen.
+[i3](https://i3wm.org) stands in for AeroSpace with the same shortcuts (`i3/config`). They are on the Windows key, which sits where Option does on a Mac; Alt sits where Cmd does and carries the Mac's Cmd shortcuts. Log out and pick "i3" from the gear icon on the login screen.
 
 [Vicinae](https://docs.vicinae.com) stands in for Raycast: Alt+Space opens the launcher and Ctrl+Alt+F the clipboard history. Its usage statistics are turned off in `vicinae/settings.json`, which Vicinae also saves its other settings to.
+
+[Flameshot](https://flameshot.org) stands in for macshot: Alt+Shift+4 captures an area to annotate, Alt+Shift+3 copies an area straight to the clipboard, and Alt+Shift+2 copies the text in an area (OCR).
 
 The install skips the macOS-only steps and Brewfile entries. VS Code extensions are installed only if `code` is already on the PATH.
 

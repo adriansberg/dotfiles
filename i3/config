@@ -5,8 +5,12 @@
 # active X keyboard layout, so no key-mapping table is needed.
 # i3 only allows comments on their own line, never after a command.
 
-# Alt, same as AeroSpace.
-set $mod Mod1
+# On a PC keyboard the Windows key sits where Option is on a Mac, and Alt
+# where Cmd is. $mod carries the AeroSpace (Option) bindings and $cmd the
+# Mac's Cmd shortcuts, so hands land where they do on the Mac.
+# On an Apple keyboard, swap the two values.
+set $mod Mod4
+set $cmd Mod1
 
 # Colemak for the session. i3 re-reads its bindings when the layout changes.
 exec --no-startup-id setxkbmap -layout us -variant colemak
@@ -124,23 +128,31 @@ assign [class="(?i)^obsidian$"] B
 # Spotify sets its class after the window appears, so assign can't catch it.
 for_window [class="^Spotify$"] move container to workspace M
 
-# Ghostty quick terminal (cmd+` on the Mac; Alt is in Cmd's spot on a PC
-# keyboard). Ghostty's own quick terminal needs Wayland, so use a scratchpad.
+# Ghostty quick terminal (cmd+` on the Mac). Ghostty's own quick terminal
+# needs Wayland, so use a scratchpad.
 exec --no-startup-id ghostty --class=ghostty.quick
 for_window [class="^ghostty\.quick$"] move scratchpad, resize set 80 ppt 60 ppt, move position center
-bindsym $mod+grave [class="^ghostty\.quick$"] scratchpad show, move position center
+bindsym $cmd+grave [class="^ghostty\.quick$"] scratchpad show, move position center
 
 # ---------------------------------------------------------------------------
 # Basics macOS gave you for free (from Ubuntu's default i3 config).
 # ---------------------------------------------------------------------------
-# Vicinae in place of Raycast (whose default hotkey is Option+Space): launcher
-# and clipboard history. Vicinae also tries to grab Alt+Space itself; i3 wins.
+# Vicinae in place of Raycast: launcher (Cmd+Space on the Mac) and clipboard
+# history (Ctrl+Cmd+F). Vicinae also tries to grab Alt+Space itself; i3 wins.
 exec --no-startup-id vicinae server
-bindsym $mod+space exec --no-startup-id vicinae toggle
-# Ctrl+Cmd+F on the Mac; Alt is in Cmd's spot, as with the lock key below.
-bindsym Control+$mod+f exec --no-startup-id vicinae vicinae://launch/clipboard/history
+bindsym $cmd+space exec --no-startup-id vicinae toggle
+bindsym Control+$cmd+f exec --no-startup-id vicinae vicinae://launch/clipboard/history
+
+# Flameshot in place of macshot, on the same keys: Cmd+Shift+4 captures an
+# area to annotate, Cmd+Shift+3 copies an area straight to the clipboard.
+bindsym $cmd+Shift+4 exec --no-startup-id flameshot gui
+bindsym $cmd+Shift+3 exec --no-startup-id flameshot gui --accept-on-select --clipboard
+# Area to text (macshot's Capture OCR, which has no key on the Mac). The
+# clipboard is left alone when nothing was read, such as after Escape.
+bindsym $cmd+Shift+2 exec --no-startup-id "f=$(mktemp) && flameshot gui --accept-on-select --raw | tesseract stdin stdout -l eng+nor > $f; [ -s $f ] && xclip -selection clipboard < $f; rm -f $f"
+
 # Lock like Ctrl+Cmd+Q, log out of i3.
-bindsym Control+$mod+q exec --no-startup-id loginctl lock-session
+bindsym Control+$cmd+q exec --no-startup-id loginctl lock-session
 bindsym $mod+Shift+e exec i3-nagbar -t warning -m 'Log out of i3?' -B 'Yes' 'i3-msg exit'
 
 floating_modifier $mod
