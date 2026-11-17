@@ -40,36 +40,7 @@ curl -fsSL https://vicinae.com/install | bash
 
 Win+V opens the clipboard history from [Vicinae](https://docs.vicinae.com), and Win+\` the quick terminal. Vicinae's usage statistics and its own Alt+Space shortcut are turned off in `vicinae/settings.json`, which Vicinae also saves its other settings to.
 
-The flow runs in three kinds of session. Each shows up under the gear icon on the login screen.
-
-#### Regolith / X11
-
-i3 inside GNOME's session (`regolith/config`), with [Regolith](https://regolith-desktop.com)'s bar, launcher, themes and Settings. GNOME handles the function keys, power and sound.
-
-```bash
-wget -qO - https://archive.regolith-desktop.com/regolith.key | gpg --dearmor | sudo tee /usr/share/keyrings/regolith-archive-keyring.gpg > /dev/null
-echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/regolith-archive-keyring.gpg] https://archive.regolith-desktop.com/ubuntu/stable noble v3.4" | sudo tee /etc/apt/sources.list.d/regolith.list
-sudo apt update
-sudo apt install regolith-desktop regolith-session-flashback regolith-look-lascaille
-```
-
-| Keys | What |
-| --- | --- |
-| Win+Space | Launcher |
-| Win+Ctrl+C | Settings (Win+Ctrl+W wifi, Win+Ctrl+B Bluetooth, Win+Ctrl+D displays) |
-| Win+N | Notifications |
-| Win+Alt+L | Choose a look (`sudo apt install regolith-look-nord` adds one) |
-| Win+Return | Terminal |
-| Alt+Tab | Window list |
-| Win+Escape | Lock |
-| Win+Shift+E | Log out |
-
-Regolith's own Win+C/D/W/B shortcuts are on Win+Ctrl here because those letters are workspaces. The session takes its keyboard layout from GNOME, so set Colemak and Caps Lock as Escape there:
-
-```bash
-gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'us+colemak')]"
-gsettings set org.gnome.desktop.input-sources xkb-options "['caps:escape']"
-```
+The flow runs in two kinds of session. Each shows up under the gear icon on the login screen.
 
 #### i3-gnome
 
@@ -88,7 +59,14 @@ sudo sh i3-gnome/install.sh
 | Win+Escape | Lock |
 | Win+Shift+E | Log out |
 
-The install script also adds a few GNOME defaults that apply to this session only (`i3-gnome/90_i3-gnome.gschema.override`). Without them GNOME's own Win+L, Win+Space, Print and Shift+Print shortcuts and its desktop window take over from i3. The keyboard layout comes from GNOME, as in the Regolith session. `sudo sh i3-gnome/install.sh uninstall` removes the session again.
+The install script also adds a few GNOME defaults that apply to this session only (`i3-gnome/90_i3-gnome.gschema.override`). Without them GNOME's own Win+L, Win+Space, Print and Shift+Print shortcuts and its desktop window take over from i3. `sudo sh i3-gnome/install.sh uninstall` removes the session again.
+
+The session takes its keyboard layout from GNOME, so set Colemak and Caps Lock as Escape there:
+
+```bash
+gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'us+colemak')]"
+gsettings set org.gnome.desktop.input-sources xkb-options "['caps:escape']"
+```
 
 #### i3
 

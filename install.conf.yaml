@@ -54,10 +54,6 @@
       if: '[ "$(uname)" = Linux ]'
       path: i3/gnome
       create: true
-    ~/.config/regolith3/i3/config:
-      if: '[ "$(uname)" = Linux ]'
-      path: regolith/config
-      create: true
     ~/.config/vicinae/settings.json:
       if: '[ "$(uname)" = Linux ]'
       path: vicinae/settings.json

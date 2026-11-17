@@ -20,7 +20,7 @@ include ~/.config/i3/flow
 # Vicinae in place of Raycast.
 bindsym $mod+space exec --no-startup-id vicinae toggle
 
-# Ubuntu's Settings app, on the same keys as in the Regolith session.
+# Ubuntu's Settings app. With Ctrl, because the plain letters are workspaces.
 bindsym $mod+Ctrl+c exec --no-startup-id gnome-control-center
 bindsym $mod+Ctrl+w exec --no-startup-id gnome-control-center wifi
 bindsym $mod+Ctrl+b exec --no-startup-id gnome-control-center bluetooth

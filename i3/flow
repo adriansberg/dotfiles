@@ -1,9 +1,9 @@
 # The AeroSpace flow, ported from ~/.dotfiles/aerospace.toml. Shared by every
 # session type: each session's own config sets $mod and then includes this
-# file (i3/config for plain i3, regolith/config for Regolith).
+# file (i3/config for plain i3, i3/gnome for i3-gnome).
 #
 # Everything here is on $mod, the Windows key, which sits where Option is on a
-# Mac. Alt is left to applications, apart from the two PC conventions at the end.
+# Mac. Alt is left to applications, apart from Alt+F4 at the end.
 # Letters are COLEMAK letters, like the AeroSpace config. bindsym follows the
 # active keyboard layout, so no key-mapping table is needed.
 # i3 only allows comments on their own line, never after a command.
