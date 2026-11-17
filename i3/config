@@ -36,6 +36,9 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- ~/.config/i3/lock
 # Wifi and Bluetooth icons in the bar's tray, in place of GNOME's top bar.
 exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
+# Bare i3 draws straight to the screen, which tears when scrolling. A
+# compositor with vsync stops that.
+exec --no-startup-id picom --backend glx --vsync
 
 # GNOME handled the function keys; under i3 each one needs a command.
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10%

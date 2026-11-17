@@ -41,6 +41,9 @@ bindsym $mod+Shift+e exec gnome-session-quit --logout
 
 # Wifi icon in the bar's tray. GNOME only starts it for its own panel.
 exec --no-startup-id nm-applet
+# Bare i3 draws straight to the screen, which tears when scrolling. A
+# compositor with vsync stops that; this session starts none of its own.
+exec --no-startup-id picom --backend glx --vsync
 
 bar {
     status_command i3status

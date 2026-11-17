@@ -31,7 +31,7 @@ That's it. The install script will:
 Install the basics first, then run the setup above:
 
 ```bash
-sudo apt install git curl unzip zsh build-essential i3 dex xss-lock xclip flameshot tesseract-ocr tesseract-ocr-nor pulseaudio-utils brightnessctl playerctl blueman
+sudo apt install git curl unzip zsh build-essential i3 picom dex xss-lock xclip flameshot tesseract-ocr tesseract-ocr-nor pulseaudio-utils brightnessctl playerctl blueman
 chsh -s "$(which zsh)"
 curl -fsSL https://vicinae.com/install | bash
 ```
