@@ -6,7 +6,8 @@
 # and Settings, so unlike i3/config this file sets up none of that.
 # i3 only allows comments on their own line, never after a command.
 
-# The Windows key. On an Apple keyboard, use Mod1 to stay on Option.
+# Mod4 is the Windows key. GNOME's keyboard options swap it with left Alt (the
+# gsettings line in the README), so the shortcuts are pressed with left Alt.
 set $mod Mod4
 
 font pango:FiraCode Nerd Font 10

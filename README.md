@@ -36,7 +36,7 @@ chsh -s "$(which zsh)"
 curl -fsSL https://vicinae.com/install | bash
 ```
 
-[i3](https://i3wm.org) stands in for AeroSpace with the same shortcuts (`i3/flow`). They are on the Windows key, which sits where Option does on a Mac. Alt is left to applications, apart from Alt+F4, which closes a window.
+[i3](https://i3wm.org) stands in for AeroSpace with the same shortcuts (`i3/flow`). They are on the Windows key (Win), and the keyboard setup swaps that key with left Alt. So Win in the tables below is pressed with the key left of the spacebar, under the thumb, and Alt with the key that has the Windows logo. Right Alt is unchanged. Alt is left to applications, apart from Alt+F4, which closes a window.
 
 Win+V opens the clipboard history from [Vicinae](https://docs.vicinae.com), and Win+\` the quick terminal. Vicinae's usage statistics and its own Alt+Space shortcut are turned off in `vicinae/settings.json`, which Vicinae also saves its other settings to.
 
@@ -64,11 +64,11 @@ sudo apt install regolith-desktop regolith-session-flashback regolith-look-lasca
 | Win+Escape | Lock |
 | Win+Shift+E | Log out |
 
-Regolith's own Win+C/D/W/B shortcuts are on Win+Ctrl here because those letters are workspaces. The session takes its keyboard layout from GNOME, so set Colemak and Caps Lock as Escape there:
+Regolith's own Win+C/D/W/B shortcuts are on Win+Ctrl here because those letters are workspaces. The session takes its keyboard layout from GNOME, so set Colemak, Caps Lock as Escape and the Alt/Windows swap there:
 
 ```bash
 gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'us+colemak')]"
-gsettings set org.gnome.desktop.input-sources xkb-options "['caps:escape']"
+gsettings set org.gnome.desktop.input-sources xkb-options "['caps:escape', 'altwin:swap_lalt_lwin']"
 ```
 
 #### i3-gnome
