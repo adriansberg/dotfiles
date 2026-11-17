@@ -54,6 +54,10 @@
       if: '[ "$(uname)" = Linux ]'
       path: i3/gnome
       create: true
+    ~/.config/polybar:
+      if: '[ "$(uname)" = Linux ]'
+      path: polybar
+      create: true
     ~/.config/vicinae/settings.json:
       if: '[ "$(uname)" = Linux ]'
       path: vicinae/settings.json

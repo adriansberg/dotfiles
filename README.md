@@ -31,7 +31,7 @@ That's it. The install script will:
 Install the basics first, then run the setup above:
 
 ```bash
-sudo apt install git curl unzip zsh build-essential i3 picom dex xss-lock xclip flameshot tesseract-ocr tesseract-ocr-nor pulseaudio-utils brightnessctl playerctl blueman
+sudo apt install git curl unzip zsh build-essential i3 picom polybar fonts-font-awesome dex xss-lock xclip flameshot tesseract-ocr tesseract-ocr-nor pulseaudio-utils brightnessctl playerctl blueman
 chsh -s "$(which zsh)"
 curl -fsSL https://vicinae.com/install | bash
 ```
@@ -44,7 +44,7 @@ The flow runs in two kinds of session. Each shows up under the gear icon on the 
 
 #### i3-gnome
 
-i3 inside GNOME's own session (`i3/gnome`), with nothing else added. GNOME handles the function keys, power, sound, the lock screen, the keyboard layout and Settings; the bar is i3's own.
+i3 inside GNOME's own session (`i3/gnome`), with nothing else added. GNOME handles the function keys, power, sound, the lock screen, the keyboard layout and Settings; the bar is [Polybar](https://polybar.github.io) (`polybar/config.ini`), as in the plain i3 session.
 
 ```bash
 sudo apt install gnome-session-flashback

@@ -51,7 +51,6 @@ bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
 bindsym XF86AudioNext exec --no-startup-id playerctl next
 bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 
-bar {
-    position top
-    status_command i3status
-}
+# Polybar in place of i3bar (polybar/config.ini). Runs at login and when i3
+# restarts; the reload key in i3/flow runs the same script.
+exec_always --no-startup-id ~/.config/polybar/launch.sh
