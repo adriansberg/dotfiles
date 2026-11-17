@@ -2,10 +2,8 @@
 # session type: each session's own config sets $mod and then includes this
 # file (i3/config for plain i3, regolith/config for Regolith).
 #
-# Everything here is on $mod, the Windows key. Each session swaps that key
-# with left Alt, so these shortcuts are under the thumb and applications' own
-# Alt shortcuts are on the key with the Windows logo. Alt is left to
-# applications, apart from the two PC conventions at the end.
+# Everything here is on $mod, the Windows key, which sits where Option is on a
+# Mac. Alt is left to applications, apart from the two PC conventions at the end.
 # Letters are COLEMAK letters, like the AeroSpace config. bindsym follows the
 # active keyboard layout, so no key-mapping table is needed.
 # i3 only allows comments on their own line, never after a command.

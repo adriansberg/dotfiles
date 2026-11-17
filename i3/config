@@ -5,14 +5,11 @@
 # and a full desktop would provide: layout, bar, launcher, tray, function keys.
 # i3 only allows comments on their own line, never after a command.
 
-# Mod4 is the Windows key. The keyboard line below swaps it with left Alt, so
-# the shortcuts are pressed with the left Alt key, under the thumb.
+# The Windows key. On an Apple keyboard, use Mod1 to stay on Option.
 set $mod Mod4
 
-# Colemak with Caps Lock as Escape for the session, and left Alt swapped with
-# the Windows key (left only: right Alt stays AltGr). i3 re-reads its bindings
-# when the layout changes.
-exec --no-startup-id setxkbmap -layout us -variant colemak -option caps:escape -option altwin:swap_lalt_lwin
+# Colemak with Caps Lock as Escape for the session. i3 re-reads its bindings when the layout changes.
+exec --no-startup-id setxkbmap -layout us -variant colemak -option caps:escape
 
 font pango:FiraCode Nerd Font 10
 
