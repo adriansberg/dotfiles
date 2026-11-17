@@ -46,5 +46,6 @@ exec --no-startup-id nm-applet
 exec --no-startup-id picom --backend glx --vsync
 
 bar {
+    position top
     status_command i3status
 }

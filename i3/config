@@ -52,5 +52,6 @@ bindsym XF86AudioNext exec --no-startup-id playerctl next
 bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 
 bar {
+    position top
     status_command i3status
 }
