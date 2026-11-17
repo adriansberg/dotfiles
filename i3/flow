@@ -123,10 +123,11 @@ assign [class="(?i)^obsidian$"] B
 for_window [class="^Spotify$"] move container to workspace M
 
 # Ghostty quick terminal (cmd+` on the Mac). Ghostty's own quick terminal
-# needs Wayland, so use a scratchpad.
+# needs Wayland, so use a scratchpad. It is sized and centred each time it is
+# shown, so it fits the monitor it lands on when monitors differ in size.
 exec --no-startup-id ghostty --class=ghostty.quick
-for_window [class="^ghostty\.quick$"] move scratchpad, resize set 80 ppt 60 ppt, move position center
-bindsym $mod+grave [class="^ghostty\.quick$"] scratchpad show, move position center
+for_window [class="^ghostty\.quick$"] move scratchpad
+bindsym $mod+grave [class="^ghostty\.quick$"] scratchpad show, resize set 80 ppt 60 ppt, move position center
 
 # Clipboard history (Ctrl+Cmd+F in Raycast), from Vicinae.
 exec --no-startup-id vicinae server
