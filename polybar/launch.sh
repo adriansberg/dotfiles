@@ -5,8 +5,21 @@
 
 monitors=$(polybar --list-monitors)
 
-# Every monitor already has its bar: leave them running.
-[ "$(pgrep -x polybar | wc -l)" -eq "$(echo "$monitors" | wc -l)" ] && exit
+# One bar per monitor, like i3bar. The tray can only exist once: it goes on
+# the widest monitor, where the work happens. The primary one wins a tie.
+tray=$(echo "$monitors" | awk '{
+    split($2, size, "x"); score = size[1] * 2 + (/\(primary\)/ ? 1 : 0)
+    if (score > best) { best = score; name = $1 }
+} END { sub(":", "", name); print name }')
+want=$(for m in $(echo "$monitors" | cut -d: -f1); do
+    [ "$m" = "$tray" ] && echo "$m:main" || echo "$m:side"
+done | sort)
+
+# The bars running now, in the same form. Leave them alone when they match.
+have=$(for pid in $(pgrep -x polybar); do
+    echo "$(tr '\0' '\n' < "/proc/$pid/environ" | sed -n 's/^MONITOR=//p'):$(tr '\0' '\n' < "/proc/$pid/cmdline" | tail -1)"
+done | sort)
+[ "$want" = "$have" ] && exit
 
 pkill -x polybar
 while pgrep -x polybar >/dev/null; do sleep 0.1; done
@@ -16,12 +29,7 @@ BAR_BATTERY=$(ls /sys/class/power_supply 2>/dev/null | grep -m1 '^BAT')
 BAR_ADAPTER=$(ls /sys/class/power_supply 2>/dev/null | grep -m1 -E '^(AC|ADP)')
 export BAR_BATTERY BAR_ADAPTER
 
-# One bar per monitor, like i3bar. The tray can only exist once: it goes on
-# the primary monitor, or on the first one when none is marked primary.
 # --reload makes a bar pick up edits to config.ini by itself.
-primary=$(echo "$monitors" | awk -F: '/\(primary\)/{print $1; exit}')
-[ -n "$primary" ] || primary=$(echo "$monitors" | head -1 | cut -d: -f1)
-for m in $(echo "$monitors" | cut -d: -f1); do
-    [ "$m" = "$primary" ] && bar=main || bar=side
-    MONITOR=$m polybar --reload "$bar" &
+for entry in $want; do
+    MONITOR=${entry%%:*} polybar --reload "${entry##*:}" &
 done
