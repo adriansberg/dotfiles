@@ -12,6 +12,9 @@ screensaver=['<Super>Escape']
 [org.gnome.gnome-flashback:i3-gnome]
 desktop=false
 root-background=true
+# Flashback's own pop-ups are a light bubble on top of the bar. With them off,
+# the first notification starts dunst (dunst/dunstrc), as in the plain session.
+notifications=false
 
 # Print and Shift+Print belong to Flameshot (i3/gnome). Flashback keeps its
 # other screenshot keys and its screen recorder on Ctrl+Shift+Alt+R.

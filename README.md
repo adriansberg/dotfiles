@@ -31,7 +31,7 @@ That's it. The install script will:
 Install the basics first, then run the setup above:
 
 ```bash
-sudo apt install git curl unzip zsh build-essential i3 picom polybar fonts-font-awesome dex xss-lock xclip flameshot tesseract-ocr tesseract-ocr-nor pulseaudio-utils brightnessctl playerctl blueman
+sudo apt install git curl unzip zsh build-essential i3 picom polybar fonts-font-awesome dunst dex xss-lock xclip flameshot tesseract-ocr tesseract-ocr-nor pulseaudio-utils brightnessctl playerctl blueman
 chsh -s "$(which zsh)"
 curl -fsSL https://vicinae.com/install | bash
 ```
@@ -40,7 +40,7 @@ curl -fsSL https://vicinae.com/install | bash
 
 Win+V opens the clipboard history from [Vicinae](https://docs.vicinae.com), and Win+\` the quick terminal. Vicinae's usage statistics and its own Alt+Space shortcut are turned off in `vicinae/settings.json`, which Vicinae also saves its other settings to.
 
-The flow runs in two kinds of session. Each shows up under the gear icon on the login screen.
+The flow runs in two kinds of session. Each shows up under the gear icon on the login screen. In both, notifications pop up through [dunst](https://dunst-project.org) (`dunst/dunstrc`).
 
 #### i3-gnome
 
@@ -59,7 +59,7 @@ sudo sh i3-gnome/install.sh
 | Win+Escape | Lock |
 | Win+Shift+E | Log out |
 
-The install script also adds a few GNOME defaults that apply to this session only (`i3-gnome/90_i3-gnome.gschema.override`). Without them GNOME's own Win+L, Win+Space, Print and Shift+Print shortcuts and its desktop window take over from i3. `sudo sh i3-gnome/install.sh uninstall` removes the session again.
+The install script also adds a few GNOME defaults that apply to this session only (`i3-gnome/90_i3-gnome.gschema.override`). Without them GNOME's own Win+L, Win+Space, Print and Shift+Print shortcuts, its desktop window and its notification bubbles take over from i3. `sudo sh i3-gnome/install.sh uninstall` removes the session again.
 
 The session takes its keyboard layout from GNOME, so set Colemak and Caps Lock as Escape there:
 

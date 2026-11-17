@@ -58,6 +58,10 @@
       if: '[ "$(uname)" = Linux ]'
       path: polybar
       create: true
+    ~/.config/dunst:
+      if: '[ "$(uname)" = Linux ]'
+      path: dunst
+      create: true
     ~/.config/vicinae/settings.json:
       if: '[ "$(uname)" = Linux ]'
       path: vicinae/settings.json

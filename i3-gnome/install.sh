@@ -31,6 +31,8 @@ fi
 ubuntu=$units/gnome-session@ubuntu.target.d/ubuntu.session.conf
 [ -f "$ubuntu" ] || { echo "missing $ubuntu: this needs an Ubuntu desktop install" >&2; exit 1; }
 [ -f "$units/gnome-flashback.target" ] || { echo "run first: sudo apt install gnome-session-flashback" >&2; exit 1; }
+# The defaults below turn off Flashback's notifications; dunst shows them instead.
+command -v dunst >/dev/null || { echo "run first: sudo apt install dunst" >&2; exit 1; }
 
 install -m0755 -D "$here/i3-gnome" /usr/bin/i3-gnome
 install -m0755 -D "$here/i3-gnome-session" /usr/bin/i3-gnome-session

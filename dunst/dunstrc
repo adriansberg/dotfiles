@@ -1,0 +1,45 @@
+# Notification pop-ups in both i3 sessions (dunst). One Dark, like the bar.
+# Goes in ~/.config/dunst/dunstrc. Try a change with:
+#   killall dunst; notify-send Title "Some text"
+
+[global]
+    # On the monitor with the focused window. Without this, dunst stays on one
+    # fixed monitor.
+    follow = keyboard
+    origin = top-right
+    # Just inside the top right window: the 30px bar, 20px of gaps, 10px more.
+    offset = 30x60
+    width = 380
+    height = 200
+    gap_size = 8
+    padding = 14
+    horizontal_padding = 16
+    text_icon_padding = 14
+    frame_width = 1
+    corner_radius = 10
+    font = Ubuntu 11
+    format = "<span foreground='#ffffff'><b>%s</b></span>\n%b"
+    show_indicators = no
+    enable_recursive_icon_lookup = true
+    icon_theme = Yaru
+    min_icon_size = 32
+    max_icon_size = 32
+
+[urgency_low]
+    background = "#282c34"
+    foreground = "#5c6370"
+    frame_color = "#3e4451"
+    timeout = 5
+
+[urgency_normal]
+    background = "#282c34"
+    foreground = "#abb2bf"
+    frame_color = "#3e4451"
+    timeout = 8
+
+# Stays until clicked.
+[urgency_critical]
+    background = "#282c34"
+    foreground = "#abb2bf"
+    frame_color = "#e06c75"
+    timeout = 0
