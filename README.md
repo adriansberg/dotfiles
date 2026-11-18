@@ -31,7 +31,7 @@ That's it. The install script will:
 Install the basics first, then run the setup above:
 
 ```bash
-sudo apt install git curl unzip zsh build-essential sway swaybg swayidle swaylock waybar fonts-font-awesome dunst grim slurp wl-clipboard xdg-desktop-portal-wlr brightnessctl playerctl policykit-1-gnome tesseract-ocr tesseract-ocr-nor
+sudo apt install git curl unzip zsh build-essential sway swaybg swayidle swaylock waybar fonts-font-awesome dunst grim slurp wl-clipboard cliphist xdg-desktop-portal-wlr brightnessctl playerctl policykit-1-gnome tesseract-ocr tesseract-ocr-nor
 chsh -s "$(which zsh)"
 curl -fsSL https://vicinae.com/install | bash
 ```
@@ -42,7 +42,7 @@ Then log out and pick "Sway" under the gear icon on the login screen.
 
 `sway/config` adds what a full desktop would: Colemak with Caps Lock as Escape (Win+Shift+Space switches to Norwegian), the touchpad, the volume, brightness and media keys, and wifi in the tray. The bar is [Waybar](https://github.com/Alexays/Waybar) (`waybar/`), notifications pop up through [dunst](https://dunst-project.org) (`dunst/dunstrc`). The brightness keys need your user in the `video` group: `sudo gpasswd -a "$USER" video`, then reboot.
 
-Win+V opens the clipboard history from [Vicinae](https://docs.vicinae.com), and Win+\` the quick terminal. Vicinae's usage statistics and its own Alt+Space shortcut are turned off in `vicinae/settings.json`, which Vicinae also saves its other settings to.
+Win+V opens the clipboard history ([cliphist](https://github.com/sentriz/cliphist), shown in [Vicinae](https://docs.vicinae.com)), and Win+\` the quick terminal. Vicinae's usage statistics and its own Alt+Space shortcut are turned off in `vicinae/settings.json`, which Vicinae also saves its other settings to.
 
 | Keys | What |
 | --- | --- |
