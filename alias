@@ -1,7 +1,6 @@
 alias ls='lsd'
 alias catt='cat $_'
 
-alias docker="podman"
 alias python="python3"
 
 alias cr="cargo run"
