@@ -13,8 +13,14 @@ then
 fi
 source ~/.zsh/antigen/antigen.zsh
 
-# Homebrew on Linux. On the Mac, ~/.zprofile does this.
-[[ -x /home/linuxbrew/.linuxbrew/bin/brew ]] && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+# Homebrew on Linux, appended so Ubuntu's tools win. On the Mac, ~/.zprofile does this.
+if [[ -x /home/linuxbrew/.linuxbrew/bin/brew ]]; then
+  export HOMEBREW_PREFIX=/home/linuxbrew/.linuxbrew
+  export HOMEBREW_CELLAR="$HOMEBREW_PREFIX/Cellar"
+  export HOMEBREW_REPOSITORY="$HOMEBREW_PREFIX/Homebrew"
+  export INFOPATH="$HOMEBREW_PREFIX/share/info:${INFOPATH:-}"
+  [[ ":$PATH:" == *":$HOMEBREW_PREFIX/bin:"* ]] || PATH="$PATH:$HOMEBREW_PREFIX/bin:$HOMEBREW_PREFIX/sbin"
+fi
 
 # Exports
 export EDITOR=vim
