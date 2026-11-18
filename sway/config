@@ -91,9 +91,9 @@ for_window [app_id="(?i)(gnome-control-center|org\.gnome\.Settings)"] floating e
 # copies it. Shift+Print only copies an area, Win+Print copies the text in an
 # area (OCR). The clipboard is left alone when nothing was read, such as after
 # Escape.
-bindsym Print exec "d=~/Pictures/Screenshots f=$(date +%Y-%m-%d_%H-%M-%S).png && mkdir -p $d && grim -g \"$(slurp)\" $d/$f && wl-copy --type image/png < $d/$f"
-bindsym Shift+Print exec "grim -g \"$(slurp)\" - | wl-copy --type image/png"
-bindsym $mod+Print exec "f=$(mktemp) && grim -g \"$(slurp)\" - | tesseract stdin stdout -l eng+nor > $f; [ -s $f ] && wl-copy < $f; rm -f $f"
+bindsym Print exec 'd=~/Pictures/Screenshots f=$(date +%Y-%m-%d_%H-%M-%S).png && mkdir -p $d && grim -g "$(slurp)" $d/$f && wl-copy --type image/png < $d/$f'
+bindsym Shift+Print exec 'grim -g "$(slurp)" - | wl-copy --type image/png'
+bindsym $mod+Print exec 'f=$(mktemp) && grim -g "$(slurp)" - | tesseract stdin stdout -l eng+nor > $f; [ -s $f ] && wl-copy < $f; rm -f $f'
 
 # Function keys. --locked keeps them working on the lock screen.
 bindsym --locked XF86AudioRaiseVolume exec wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 10%+
