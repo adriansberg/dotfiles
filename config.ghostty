@@ -6,3 +6,6 @@ macos-option-as-alt = left
 
 split-inherit-working-directory = true
 
+window-theme = ghostty
+
+keybind = ctrl+enter=toggle_split_zoom
