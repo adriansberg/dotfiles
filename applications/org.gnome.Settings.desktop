@@ -1,0 +1,14 @@
+# Ubuntu's Settings app, shown outside GNOME too. Goes in
+# ~/.local/share/applications, where it replaces the system entry of the same
+# name. The system one has OnlyShowIn=GNOME, which hides it from launchers
+# such as Vicinae in Sway, and Settings refuses to start unless the desktop
+# name says GNOME.
+[Desktop Entry]
+Name=Settings
+Icon=org.gnome.Settings
+Exec=env XDG_CURRENT_DESKTOP=GNOME gnome-control-center
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=GNOME;GTK;Settings;
+Keywords=Preferences;Settings;

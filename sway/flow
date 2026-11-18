@@ -1,25 +1,24 @@
-# The AeroSpace flow, ported from ~/.dotfiles/aerospace.toml. Shared by every
-# session type: each session's own config sets $mod and then includes this
-# file (i3/config for plain i3, i3/gnome for i3-gnome).
+# The AeroSpace flow, ported from ~/.dotfiles/aerospace.toml. sway/config sets
+# $mod and then includes this file.
 #
 # Everything here is on $mod, the Windows key, which sits where Option is on a
 # Mac. Alt is left to applications, apart from Alt+F4 at the end.
 # Letters are COLEMAK letters, like the AeroSpace config. bindsym follows the
 # active keyboard layout, so no key-mapping table is needed.
-# i3 only allows comments on their own line, never after a command.
+# Sway only allows comments on their own line, never after a command.
 
-# = [gaps]. i3 adds outer gaps on top of inner, so this is 10px between
-# windows and 20px at the screen edges.
+# = [gaps]. Sway adds outer gaps on top of inner, so this is 10px between
+# windows and 10px at the screen edges.
 gaps inner 10px
-gaps outer 10px
+gaps outer 0px
 
 # = default-root-container-orientation = 'auto'
 default_orientation auto
 
-# AeroSpace doesn't focus on hover; i3 does unless told not to.
+# AeroSpace doesn't focus on hover; Sway does unless told not to.
 focus_follows_mouse no
 
-# i3's default mouse_warping (output) already = on-focused-monitor-changed.
+# Sway's default mouse_warping (output) already = on-focused-monitor-changed.
 
 floating_modifier $mod
 
@@ -41,7 +40,7 @@ bindsym $mod+Shift+n move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 
-# AeroSpace 'resize smart' picks the axis; i3 needs one.
+# AeroSpace 'resize smart' picks the axis; Sway needs one.
 bindsym $mod+Shift+minus resize shrink width 50 px
 bindsym $mod+Shift+equal resize grow width 50 px
 
@@ -99,41 +98,48 @@ bindsym $mod+Shift+Tab move workspace to output next
 bindsym $mod+Shift+semicolon mode "service"
 
 # = [mode.service.binding]. Not ported: r (flatten), backspace
-# (close-all-but-current), alt-shift-n/e/i/o (join-with; in i3 you
+# (close-all-but-current), alt-shift-n/e/i/o (join-with; in Sway you
 # 'split h' / 'split v' before opening the next window instead).
 mode "service" {
-    # Reload, as in AeroSpace. i3 does not rerun startup commands on a reload,
-    # so the bars are re-synced here: this is how they follow the monitors.
-    bindsym Escape mode "default"; reload; exec --no-startup-id ~/.config/polybar/launch.sh
+    # Reload, as in AeroSpace. Sway restarts Waybar with it.
+    bindsym Escape mode "default"; reload
     bindsym f floating toggle; mode "default"
     bindsym Shift+f fullscreen toggle; mode "default"
     bindsym $mod+f fullscreen toggle; mode "default"
 }
 
 # ---------------------------------------------------------------------------
-# = [[on-window-detected]]. Check a window's class with: xprop WM_CLASS
+# = [[on-window-detected]]. Native Wayland apps have an app_id, apps under
+# XWayland a class. Electron apps can be either, so they get both rules.
+# Check a window with: swaymsg -t get_tree | grep -E '"(app_id|class)"'
 # Not ported: Outlook, Messenger (no Linux apps), Raycast (launchers float).
 # ---------------------------------------------------------------------------
-assign [class="(?i)^com\.mitchellh\.ghostty$"] T
+assign [app_id="(?i)^com\.mitchellh\.ghostty$"] T
+assign [app_id="(?i)^slack$"] S
 assign [class="^Slack$"] S
-assign [class="(?i)zen"] W
+assign [app_id="(?i)zen"] W
+# Follow a new browser window to W instead of leaving it there unseen.
+for_window [app_id="(?i)zen"] focus
 assign [class="^Wfica$"] X
+assign [app_id="(?i)podman"] P
 assign [class="(?i)podman"] P
+assign [app_id="(?i)teams"] C
 assign [class="(?i)teams"] C
+assign [app_id="(?i)^obsidian$"] B
 assign [class="(?i)^obsidian$"] B
 # Spotify sets its class after the window appears, so assign can't catch it.
+for_window [app_id="(?i)^spotify$"] move container to workspace M
 for_window [class="^Spotify$"] move container to workspace M
 
-# Ghostty quick terminal (cmd+` on the Mac). Ghostty's own quick terminal
-# needs Wayland, so use a scratchpad. It is sized and centred each time it is
-# shown, so it fits the monitor it lands on when monitors differ in size.
-exec --no-startup-id ghostty --class=ghostty.quick
-for_window [class="^ghostty\.quick$"] move scratchpad
-bindsym $mod+grave [class="^ghostty\.quick$"] scratchpad show, resize set 80 ppt 60 ppt, move position center
+# Ghostty quick terminal (cmd+` on the Mac), as a scratchpad. It is sized and
+# centred each time it is shown, so it fits the monitor it lands on when
+# monitors differ in size.
+for_window [app_id="^ghostty\.quick$"] move scratchpad
+bindsym $mod+grave [app_id="^ghostty\.quick$"] scratchpad show, resize set 80 ppt 60 ppt, move position center
 
 # Clipboard history (Ctrl+Cmd+F in Raycast), from Vicinae.
-exec --no-startup-id vicinae server
-bindsym $mod+v exec --no-startup-id vicinae vicinae://launch/clipboard/history
+exec vicinae server
+bindsym $mod+v exec vicinae vicinae://launch/clipboard/history
 
 # The one Alt key every PC desktop owns: Alt+F4 closes the window.
 bindsym Mod1+F4 kill

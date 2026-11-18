@@ -1,0 +1,52 @@
+// The bar for the Sway session. Colours are in style.css. Sway starts it
+// (sway/config).
+// Waybar puts a bar on every monitor by itself, each with its own workspaces.
+// The icons are Font Awesome 4 glyphs (apt: fonts-font-awesome).
+{
+    "position": "top",
+    "height": 30,
+    "spacing": 20,
+    "modules-left": ["sway/workspaces", "sway/mode"],
+    "modules-center": ["clock"],
+    "modules-right": ["custom/vpn", "pulseaudio", "battery", "tray"],
+
+    "sway/workspaces": {
+        "disable-scroll": true
+    },
+
+    "clock": {
+        "interval": 5,
+        "format": "{:%a %d %b   %H:%M}",
+        "tooltip": false
+    },
+
+    // Active NetworkManager VPN and WireGuard connections, by name.
+    "custom/vpn": {
+        "exec": "~/.config/waybar/vpn.sh",
+        "interval": 5,
+        "tooltip": false
+    },
+
+    // Click mutes, scrolling changes the volume.
+    "pulseaudio": {
+        // volume-down, volume-up
+        "format": "<span color='#61afef'>{icon}</span>  {volume}%",
+        "format-icons": ["", ""],
+        // volume-off
+        "format-muted": "  muted",
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        "tooltip": false
+    },
+
+    "battery": {
+        // battery-empty, -quarter, -half, -three-quarters, -full; bolt
+        "format": "<span color='#98c379'>{icon}</span>  {capacity}%",
+        "format-charging": "<span color='#98c379'>{icon}</span>  {capacity}% ",
+        "format-icons": ["", "", "", "", ""]
+    },
+
+    // Wifi and other applet icons.
+    "tray": {
+        "spacing": 8
+    }
+}

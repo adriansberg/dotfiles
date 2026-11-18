@@ -1,0 +1,31 @@
+#!/bin/bash
+# swaylock that also unlocks on a fingerprint. swaylock only asks PAM after
+# Enter, so fprintd-verify runs alongside it and unlocks on a match.
+# swayidle starts this (sway/config) and waits for it before a suspend, so it
+# returns once the screen is locked and leaves the verifier running.
+
+pgrep -xu "$EUID" swaylock >/dev/null && exit
+
+# -f returns once the screen is locked.
+swaylock -f -c 282c34 || exit
+
+(
+    while :; do
+        fprintd-verify >/dev/null 2>&1 &
+        verifier=$!
+        # A password unlock leaves fprintd-verify holding the reader, which
+        # would keep sudo from using it.
+        while kill -0 "$verifier" 2>/dev/null; do
+            pgrep -xu "$EUID" swaylock >/dev/null || { kill "$verifier"; exit; }
+            sleep 0.5
+        done
+        if wait "$verifier"; then
+            # SIGUSR1 is swaylock's own unlock. Any other kill leaves Sway
+            # locked with no way back in.
+            pkill -USR1 -xu "$EUID" swaylock
+            exit
+        fi
+        # A wrong finger, or the reader is still waking up after a suspend.
+        sleep 1
+    done
+) &

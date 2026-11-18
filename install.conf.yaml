@@ -38,29 +38,21 @@
       if: '[ "$(uname)" = Linux ]'
       path: gnupg/gpg-agent.linux.conf
       create: true
-    ~/.config/i3/config:
-      if: '[ "$(uname)" = Linux ]'
-      path: i3/config
-      create: true
-    ~/.config/i3/lock:
-      if: '[ "$(uname)" = Linux ]'
-      path: i3/lock
-      create: true
-    ~/.config/i3/flow:
-      if: '[ "$(uname)" = Linux ]'
-      path: i3/flow
-      create: true
-    ~/.config/i3/gnome:
-      if: '[ "$(uname)" = Linux ]'
-      path: i3/gnome
-      create: true
-    ~/.config/polybar:
-      if: '[ "$(uname)" = Linux ]'
-      path: polybar
-      create: true
     ~/.config/dunst:
       if: '[ "$(uname)" = Linux ]'
       path: dunst
+      create: true
+    ~/.config/sway:
+      if: '[ "$(uname)" = Linux ]'
+      path: sway
+      create: true
+    ~/.config/waybar:
+      if: '[ "$(uname)" = Linux ]'
+      path: waybar
+      create: true
+    ~/.local/share/applications/org.gnome.Settings.desktop:
+      if: '[ "$(uname)" = Linux ]'
+      path: applications/org.gnome.Settings.desktop
       create: true
     ~/.config/vicinae/settings.json:
       if: '[ "$(uname)" = Linux ]'

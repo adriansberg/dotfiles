@@ -31,48 +31,28 @@ That's it. The install script will:
 Install the basics first, then run the setup above:
 
 ```bash
-sudo apt install git curl unzip zsh build-essential i3 picom polybar fonts-font-awesome dunst dex xss-lock xclip flameshot tesseract-ocr tesseract-ocr-nor pulseaudio-utils brightnessctl playerctl blueman
+sudo apt install git curl unzip zsh build-essential sway swaybg swayidle swaylock waybar fonts-font-awesome dunst grim slurp wl-clipboard xdg-desktop-portal-wlr brightnessctl playerctl policykit-1-gnome tesseract-ocr tesseract-ocr-nor
 chsh -s "$(which zsh)"
 curl -fsSL https://vicinae.com/install | bash
 ```
 
-[i3](https://i3wm.org) stands in for AeroSpace with the same shortcuts (`i3/flow`). They are on the Windows key, which sits where Option does on a Mac. Alt is left to applications, apart from Alt+F4, which closes a window.
+Then log out and pick "Sway" under the gear icon on the login screen.
+
+[Sway](https://swaywm.org) stands in for AeroSpace with the same shortcuts (`sway/flow`). They are on the Windows key, which sits where Option does on a Mac. Alt is left to applications, apart from Alt+F4, which closes a window. Ctrl+Q quits the focused app, like Cmd+Q.
+
+`sway/config` adds what a full desktop would: Colemak with Caps Lock as Escape (Win+Shift+Space switches to Norwegian), the touchpad, the volume, brightness and media keys, and wifi in the tray. The bar is [Waybar](https://github.com/Alexays/Waybar) (`waybar/`), notifications pop up through [dunst](https://dunst-project.org) (`dunst/dunstrc`). The brightness keys need your user in the `video` group: `sudo gpasswd -a "$USER" video`, then reboot.
 
 Win+V opens the clipboard history from [Vicinae](https://docs.vicinae.com), and Win+\` the quick terminal. Vicinae's usage statistics and its own Alt+Space shortcut are turned off in `vicinae/settings.json`, which Vicinae also saves its other settings to.
-
-The flow runs in two kinds of session. Each shows up under the gear icon on the login screen. In both, notifications pop up through [dunst](https://dunst-project.org) (`dunst/dunstrc`).
-
-#### i3-gnome
-
-i3 inside GNOME's own session (`i3/gnome`), with nothing else added. GNOME handles the function keys, power, sound, the lock screen, the keyboard layout and Settings; the bar is [Polybar](https://polybar.github.io) (`polybar/config.ini`), as in the plain i3 session.
-
-```bash
-sudo apt install gnome-session-flashback
-sudo sh i3-gnome/install.sh
-```
 
 | Keys | What |
 | --- | --- |
 | Win+Space | Launcher (Vicinae) |
-| Win+Ctrl+C | Ubuntu's Settings (Win+Ctrl+W wifi, Win+Ctrl+B Bluetooth, Win+Ctrl+D displays) |
-| Print, Shift+Print, Win+Print | Flameshot: annotate an area, copy an area, copy the text in an area |
-| Win+Escape | Lock |
+| Win+Ctrl+C | Ubuntu's Settings (Win+Ctrl+W wifi, Win+Ctrl+B Bluetooth) |
+| Print, Shift+Print, Win+Print | Save and copy an area, copy an area, copy the text in an area |
+| Win+Escape | Lock, with fingerprint unlock (`sway/lock`) |
 | Win+Shift+E | Log out |
 
-The install script also adds a few GNOME defaults that apply to this session only (`i3-gnome/90_i3-gnome.gschema.override`). Without them GNOME's own Win+L, Win+Space, Print and Shift+Print shortcuts, its desktop window and its notification bubbles take over from i3. `sudo sh i3-gnome/install.sh uninstall` removes the session again.
-
-The session takes its keyboard layout from GNOME, so set Colemak and Caps Lock as Escape there:
-
-```bash
-gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'us+colemak')]"
-gsettings set org.gnome.desktop.input-sources xkb-options "['caps:escape']"
-```
-
-#### i3
-
-Bare i3 (`i3/config`). It replaces GNOME's top bar and function-key handling, so this file binds the volume, brightness and media keys itself and puts wifi and Bluetooth icons in the bar. The brightness keys need your user in the `video` group: `sudo gpasswd -a "$USER" video`, then reboot. Ubuntu's Settings app opens with `env XDG_CURRENT_DESKTOP=GNOME gnome-control-center`.
-
-Win+Space opens Vicinae as the launcher. [Flameshot](https://flameshot.org) stands in for macshot: Print captures an area to annotate, Shift+Print copies an area straight to the clipboard, and Win+Print copies the text in an area (OCR). Win+Escape locks.
+Ubuntu's Settings only starts when it thinks it is in GNOME. `applications/org.gnome.Settings.desktop` starts it that way and makes it show up in Vicinae. Its Displays panel doesn't work outside GNOME.
 
 The install skips the macOS-only steps and Brewfile entries. VS Code extensions are installed only if `code` is already on the PATH.
 

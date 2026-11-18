@@ -1,4 +1,4 @@
-# Notification pop-ups in both i3 sessions (dunst). One Dark, like the bar.
+# Notification pop-ups in the Sway session (dunst). One Dark, like the bar.
 # Goes in ~/.config/dunst/dunstrc. Try a change with:
 #   killall dunst; notify-send Title "Some text"
 
