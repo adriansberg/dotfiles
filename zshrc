@@ -39,6 +39,14 @@ DISABLE_LS_COLORS=true
 
 # Load the oh-my-zsh's library.
 antigen use oh-my-zsh
+# oh-my-zsh.sh normally does this, but antigen skips it. Plugins like kubectl
+# cache their completions here and fail at startup without it. The path is
+# spelled out because ZSH_CACHE_DIR is only set inside `antigen apply` once
+# antigen has cached its setup.
+_omz_completions=${ADOTDIR:-$HOME/.antigen}/bundles/robbyrussell/oh-my-zsh/cache/completions
+[[ -d $_omz_completions ]] || mkdir -p $_omz_completions
+fpath=($_omz_completions $fpath)
+unset _omz_completions
 
 plugins=(virtualenv)
 
