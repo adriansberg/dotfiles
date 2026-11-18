@@ -144,8 +144,8 @@ bindsym $mod+v exec vicinae vicinae://launch/clipboard/history
 # The one Alt key every PC desktop owns: Alt+F4 closes the window.
 bindsym Mod1+F4 kill
 
-# Window border colours: One Dark, like config.ghostty and the bar.
-client.focused          #61afef #61afef #282c34 #98c379 #61afef
-client.focused_inactive #3e4451 #3e4451 #abb2bf #3e4451 #3e4451
-client.unfocused        #282c34 #282c34 #5c6370 #282c34 #282c34
-client.urgent           #e06c75 #e06c75 #282c34 #e06c75 #e06c75
+# Window border colours: Abyssal Trench (nvim/colors/abyssal-trench.lua). Focused is its selection colour, like the bar.
+client.focused          #143349 #143349 #dcebf3 #47606f #143349
+client.focused_inactive #0e1c29 #0e1c29 #9db4c2 #0e1c29 #0e1c29
+client.unfocused        #06101a #06101a #5c7584 #06101a #06101a
+client.urgent           #e26a6a #e26a6a #06101a #e26a6a #e26a6a

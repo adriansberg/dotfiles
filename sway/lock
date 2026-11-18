@@ -7,7 +7,7 @@
 pgrep -xu "$EUID" swaylock >/dev/null && exit
 
 # -f returns once the screen is locked.
-swaylock -f -c 282c34 || exit
+swaylock -f -c 06101a || exit
 
 (
     while :; do

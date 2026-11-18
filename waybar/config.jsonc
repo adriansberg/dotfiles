@@ -30,7 +30,7 @@
     // Click mutes, scrolling changes the volume.
     "pulseaudio": {
         // volume-down, volume-up
-        "format": "<span color='#61afef'>{icon}</span>  {volume}%",
+        "format": "<span color='#6dabdd'>{icon}</span>  {volume}%",
         "format-icons": ["", ""],
         // volume-off
         "format-muted": "  muted",
@@ -40,8 +40,8 @@
 
     "battery": {
         // battery-empty, -quarter, -half, -three-quarters, -full; bolt
-        "format": "<span color='#98c379'>{icon}</span>  {capacity}%",
-        "format-charging": "<span color='#98c379'>{icon}</span>  {capacity}% ",
+        "format": "<span color='#52c79a'>{icon}</span>  {capacity}%",
+        "format-charging": "<span color='#52c79a'>{icon}</span>  {capacity}% ",
         "format-icons": ["", "", "", "", ""]
     },
 

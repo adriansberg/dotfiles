@@ -1,4 +1,4 @@
-/* One Dark, like config.ghostty. */
+/* Abyssal Trench, like nvim/colors/abyssal-trench.lua. */
 
 * {
     font-family: "Ubuntu", "FontAwesome";
@@ -9,8 +9,8 @@
 }
 
 window#waybar {
-    background: #282c34;
-    color: #abb2bf;
+    background: #06101a;
+    color: #b8cdd9;
 }
 
 .modules-right {
@@ -19,7 +19,7 @@ window#waybar {
 
 #workspaces button {
     padding: 0 12px;
-    color: #abb2bf;
+    color: #b8cdd9;
     background: transparent;
     box-shadow: none;
     text-shadow: none;
@@ -27,27 +27,27 @@ window#waybar {
 
 /* GTK's own hover style would otherwise draw a light button. */
 #workspaces button:hover {
-    background: #3e4451;
+    background: #0e1c29;
 }
 
 #workspaces button.focused {
-    color: #ffffff;
-    background: #3e4451;
-    box-shadow: inset 0 -2px #61afef;
+    color: #dcebf3;
+    background: #143349;
+    box-shadow: inset 0 -2px #6dabdd;
 }
 
 #workspaces button.urgent {
-    color: #282c34;
-    background: #e06c75;
+    color: #06101a;
+    background: #e26a6a;
 }
 
 /* The binding mode, such as "service". */
 #mode {
     padding: 0 12px;
-    color: #282c34;
-    background: #e5c07b;
+    color: #06101a;
+    background: #e6ca7f;
 }
 
 #pulseaudio.muted {
-    color: #5c6370;
+    color: #5c7584;
 }
