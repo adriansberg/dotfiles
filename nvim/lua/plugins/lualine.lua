@@ -3,6 +3,8 @@
 return {
   "nvim-lualine/lualine.nvim",
   opts = function(_, opts)
+    -- Always show the project root name; LazyVim hides it when root == cwd, the common case.
+    opts.sections.lualine_c[1] = LazyVim.lualine.root_dir({ cwd = true })
     for i, c in ipairs(opts.sections.lualine_c) do
       if c[1] == "filetype" then -- the filename component comes right after the filetype icon
         opts.sections.lualine_c[i + 1] = {
