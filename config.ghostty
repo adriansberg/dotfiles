@@ -1,4 +1,26 @@
-theme = One Dark Two
+# Abyssal Trench, the same colours as nvim/colors/abyssal-trench.lua (from
+# tokyonight's Ghostty template).
+palette = 0=#050d15
+palette = 1=#f18787
+palette = 2=#52c79a
+palette = 3=#e6ca7f
+palette = 4=#6dabdd
+palette = 5=#ab95dc
+palette = 6=#64d5df
+palette = 7=#9db4c2
+palette = 8=#47606f
+palette = 9=#ff9595
+palette = 10=#00db9f
+palette = 11=#f9d775
+palette = 12=#6ebaf3
+palette = 13=#baa1f1
+palette = 14=#1fe8f5
+palette = 15=#b8cdd9
+background = #06101a
+foreground = #b8cdd9
+cursor-color = #b8cdd9
+selection-background = #143349
+selection-foreground = #b8cdd9
 
 keybind = global:cmd+grave_accent=toggle_quick_terminal
 
