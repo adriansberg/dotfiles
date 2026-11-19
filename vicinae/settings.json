@@ -18,6 +18,9 @@
          "name": "ayu-dark"
       }
    },
+   "tray": {
+      "enabled": false
+   },
    "telemetry": {
       "system_info": false
    },
