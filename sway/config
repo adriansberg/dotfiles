@@ -79,6 +79,7 @@ bindsym $mod+Shift+e exec swaynag -t warning -m 'Log out of Sway?' -B 'Yes' 'swa
 
 # Vicinae in place of Raycast.
 bindsym $mod+space exec vicinae toggle
+bindsym Mod1+space exec vicinae toggle
 
 # Ubuntu's Settings app, which only starts when it thinks it is in GNOME. The
 # display panel needs GNOME's compositor, so it is left out.
