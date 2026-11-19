@@ -93,7 +93,8 @@ bindsym $mod+Shift+x move container to workspace X
 bindsym $mod+Shift+z move container to workspace Z
 
 bindsym $mod+Tab workspace back_and_forth
-bindsym $mod+Shift+Tab move workspace to output next
+# Sway has no "output next" (i3 does), so pick the next active output by hand.
+bindsym $mod+Shift+Tab exec 'swaymsg move workspace to output "$(swaymsg -t get_outputs | jq -r "[.[]|select(.active)] | .[((map(.focused)|index(true)) + 1) % length].name")"'
 
 bindsym $mod+Shift+semicolon mode "service"
 
